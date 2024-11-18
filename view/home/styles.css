@@ -78,6 +78,9 @@ body{
     color: #bababa; /* Cambia el color de los enlaces cuando se pasa el mouse */
 }
 
+.icon-nav{
+  padding-right: 100px;
+}
 .icono {
     width: 30px;
     height: 30px; 
@@ -230,8 +233,7 @@ body{
   position: relative;
   height: 500px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 
@@ -288,3 +290,170 @@ body{
   fill: none; /* Sin relleno para el icono */
 }
 
+
+
+
+/* OFERTAS */
+
+.offerts{
+  margin: 60px;
+}
+
+.offer h3{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.offer-top{
+  margin: 50px;
+}
+
+.offer-background{
+  color: #FFFFFF;
+  background-color: #202020;
+  display: flex;
+  position: relative;
+  margin-bottom: 40px;
+  text-align: center;
+  height: 250px;
+  max-width: 500px !important;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.offer-discount{
+  font-size: 50px;
+
+}
+
+.offer-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.restaurant-name{
+  font-size: 60px;
+  font-weight: bold;
+  padding: 0px;
+  margin: 0px;
+}
+
+.offer-description h3{
+  padding: 40px;
+}
+
+.btn-2{
+  color: #202020;
+  background-color: #FFFFFF;
+  margin-left: 40px;
+  padding: 10px 30PX;
+  font-size: 20px;
+  text-decoration: none;
+  border-width: 1px; 
+  border-style: solid; 
+  border-color: #202020;
+
+}
+
+.btn-2:hover{
+  color: #ffffff;
+  background-color: #202020;
+  padding: 10px 30px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+/* Footer Container */
+footer.container-fluid.css-1r8ynqq {
+  background-color: #121212; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+}
+
+/* Footer Menu */
+.footer-menu {
+  list-style-type: none;  
+  margin: 0;
+  padding: 0;
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-menu li {
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+
+.footer-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+/* Social Icons */
+.social {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding-top: 30px;
+}
+
+.social a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+
+/* Disclaimer Section */
+.disclaimer {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.disclaimer p {
+  margin: 0;
+}
+
+/* Copyright Section */
+.body {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.body p {
+  margin: 5px 0;
+}
+
+
+.icon-social{
+  fill: #FFFFFF;
+  width: 17px;
+  height: 17px;
+
+}
