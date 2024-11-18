@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi One</title>
+    <link rel="stylesheet" href="styles.css">
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- TIPOGRACFIA ROBOT -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+<body>
+
+<!-- NAVEGADOR -->
+<nav class="navbar navbar-expand-md nav">
+  <div class="container-fluid d-flex align-items-center">
+    
+    
+    
+    <!-- Contenido colapsable -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      
+        <!-- Logo -->
+      <a class="col-1" href="#">
+        <img src="/images/logo_black.jpg" class="logo" alt="Sushi one logo">
+      </a>
+      
+      <!-- Botón de colapso para pantallas pequeñas -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <!-- Menú de navegación -->
+      <ul class="navbar-nav ms-4 col-md-5 d-flex flex-row align-items-center">
+        <li class="nav-item me-4">
+          <a class="nav-link" href="#">INICIO</a>
+        </li>
+        <li class="nav-item me-4">
+          <a class="nav-link" href="#">CARTA</a>
+        </li>
+        <li class="nav-item me-4">
+          <a class="nav-link" href="#">LOCALES</a>
+        </li>
+      </ul>
+
+      <!-- Botón de pedido -->
+      <div class="col-md-2 d-flex flex-end justify-content-end align-items-center col-2">
+        <a href="#" class="btn-1">EMPEZAR PEDIDO</a>
+      </div>
+      
+      <!-- Iconos -->
+      <div class="col-md-4 d-flex justify-content-end align-items-center">
+        <a class="nav-item me-4" href="#">
+          <img src="/images/iconos/icono_session_blanco.png" class="icono" alt="lupa">
+        </a>
+        <a class="nav-item me-4" href="#">
+          <img src="/images/iconos/icono_carrito_blanco.png" class="icono" alt="carrito">
+        </a>
+        <a class="nav-item me-4" href="#">
+          <img src="/images/iconos/icono_session_blanco.png" class="icono" alt="user">
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+
+  
+  
+
+<!-- BANNER -->
+<div class="banner">
+  <h1 class="title "><b>SUSHI ONE</b></h1>
+</div>
+
+<!-- PRODUCTOS CARRUSEL -->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        <div class="col-4">
+          <div class="card">
+            <div class="img-wrapper">
+              <img src="/images/productos/Nigiris_Carrusel.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="img-wrapper">
+              <img src="/images/productos/sushi_carruel.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="img-wrapper">
+              <img src="/images/productos/sushi_largo.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="row">
+        <div class="col-4">
+          <div class="card">
+            <div class="img-wrapper">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-1.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="img-wrapper">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-2.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="img-wrapper">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-3.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <div class="hexagono-borde-l">
+      <img class="icono-flecha-l" src="/images/iconos/icono_flecha_blanco.webp" alt="...">
+      <span class="visually-hidden">Previous</span>
+    </div>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <div class="hexagono-borde-r">
+      <img class="icono-flecha-r" src="/images/iconos/icono_flecha_blanco.webp" alt="...">
+      <span class="visually-hidden">Next</span>
+    </div>
+  </button>
+</div>
+  
+
+
+  <!-- PUESTO DE VENTA -->
+<div class="container-fluid justify-content-start puesto-venta">
+        <div>
+          <h2 class="sushi-text">ENCUENTRE SU<br>PUESTO DE VENTA</h2>
+        </div>
+        
+          <!-- <div class="hexagono-borde-local">
+          <a href="#" class="local-btn"></a>
+        </div> -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.464 58.271" width="100" height="100">
+          <g stroke-width="1.5" transform="translate(-1624 -187.923)">
+              <path d="M50.464 43.992L25.732 58.271 1 43.992V15.434L25.732 1.155l24.732 14.279z" 
+                    transform="translate(1623.5 187.345)" 
+                    class="hexagon on-dark"></path>
+              <path class="icon on-dark" d="M0 0l7.432 5.674L14.864 0" 
+                    transform="rotate(-90 935.432 -711.068)"></path>
+          </g>
+      </svg>
+</div>
+
+  <!-- OFERTAS -->
+  <!-- <section class="ofertas">
+    <h3>OFERTAS</h3>
+    <h2>SUSHI ONE WOLRD</h2>
+    <div class="oferta_1">
+        <p class="desc">OFERTA DISPONIBLE LOS JUEVES</p>
+    </div>
+    <div class="oferta_2">
+        <p class="desc">OFERTA EXCLUSIVA PARA NUEVOS USUARIOS EN SU PRIMER PEDIDO</p>
+    </div>
+  </section> -->
+
+  <!-- FOOTER -->
+  <!-- <footer class="footer">
+    <div class="footer-content">
+        <p>Footer Text Here</p>
+        <div class="social-icons">
+            <img src="facebook-icon.png" alt="Facebook">
+            <img src="twitter-icon.png" alt="Twitter">
+            <img src="instagram-icon.png" alt="Instagram">
+        </div>
+    </div>
+    <p class="copyright">© 2024 Sushi One. Todos los derechos reservados.</p>
+  </footer>       -->
+
+
+
+<footer class="container-fluid css-1r8ynqq"><div class="content no-gutters row" style="padding-bottom: 120px;"><div class="col-xl-10 offset-xl-1"><div class="row"><div class="order-0 mb-3 mb-md-5 col"><ul class="footer-menu text-uppercase css-1raapn3"><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/la-empresa">EMPRESA</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/financials">Financials</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/empleo">EMPLEO</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/contacto">CONTACTO</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/sostenibilidad">Sostenibilidad</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="https://media.lamborghini.com/english">Media Center</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/privacy-legal">AVISO LEGAL Y PRIVACIDAD</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a href="#onetrust-settings">Configuración de cookies</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/mapa-del-sitio">MAPA DEL SITIO</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="https://newsletter.lamborghini.com/en">Newsletter</a></li><li class="col-6 col-md-auto mr-md-4 mr-lg-5"><a class="css-8vz4p2" href="/es-en/accesibilidad">Accesibilidad</a></li></ul></div><div class="order-4 order-md-1 ml-md-auto col-md-auto"><div class="social mt-5 mt-md-0 justify-content-md-end"><div class="col-2 col-md-auto social-instagram"><a aria-label="Instagram" class="lif-instagram css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;instagram&quot;,&quot;socialTarget&quot;:&quot;https://www.instagram.com/lamborghini/?hl=en&quot;}" rel="noopener" href="https://www.instagram.com/lamborghini/?hl=en"><span class="sr-only">Instagram</span></a></div><div class="col-2 col-md-auto social-threads"><a aria-label="Threads" class="lif-threads css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;threads&quot;,&quot;socialTarget&quot;:&quot;https://www.threads.net/@lamborghini&quot;}" rel="noopener" href="https://www.threads.net/@lamborghini"><span class="sr-only">Threads</span></a></div><div class="col-2 col-md-auto social-facebook"><a aria-label="Facebook" class="lif-facebook css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;facebook&quot;,&quot;socialTarget&quot;:&quot;https://www.facebook.com/Lamborghini/&quot;}" rel="noopener" href="https://www.facebook.com/Lamborghini/"><span class="sr-only">Facebook</span></a></div><div class="col-2 col-md-auto social-youtube"><a aria-label="Youtube" class="lif-youtube css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;youtube&quot;,&quot;socialTarget&quot;:&quot;https://www.youtube.com/channel/UC9DXZC8BCDOW6pYAQKgozqw&quot;}" rel="noopener" href="https://www.youtube.com/channel/UC9DXZC8BCDOW6pYAQKgozqw"><span class="sr-only">Youtube</span></a></div><div class="col-2 col-md-auto social-twitter"><a aria-label="Twitter" class="lif-twitter css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;twitter&quot;,&quot;socialTarget&quot;:&quot;https://twitter.com/Lamborghini&quot;}" rel="noopener" href="https://twitter.com/Lamborghini"><span class="sr-only">Twitter</span></a></div><div class="col-2 col-md-auto social-tiktok"><a aria-label="TikTok" class="lif-tiktok css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;tiktok&quot;,&quot;socialTarget&quot;:&quot;https://www.tiktok.com/@lamborghini?lang=en&quot;}" rel="noopener" href="https://www.tiktok.com/@lamborghini?lang=en"><span class="sr-only">TikTok</span></a></div><div class="col-2 col-md-auto social-linkedin"><a aria-label="Linkedin" class="lif-linkedin css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;linkedin&quot;,&quot;socialTarget&quot;:&quot;https://www.linkedin.com/company/automobili-lamborghini-s-p-a-&quot;}" rel="noopener" href="https://www.linkedin.com/company/automobili-lamborghini-s-p-a-"><span class="sr-only">Linkedin</span></a></div><div class="col-2 col-md-auto social-weibo"><a aria-label="WEIBO" class="lif-weibo css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;weibo&quot;,&quot;socialTarget&quot;:&quot;https://weibo.com/lamborghinichina?is_all=1&quot;}" rel="noopener" href="https://weibo.com/lamborghinichina?is_all=1"><span class="sr-only">WEIBO</span></a></div><div class="col-2 col-md-auto social-youku"><a aria-label="Youku" class="lif-youku css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;youku&quot;,&quot;socialTarget&quot;:&quot;http://i.youku.com/i/UMjg0MDg1ODMy&quot;}" rel="noopener" href="http://i.youku.com/i/UMjg0MDg1ODMy"><span class="sr-only">Youku</span></a></div><div class="col-2 col-md-auto social-wechat"><a aria-label="Wechat" class="lif-wechat css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;wechat&quot;,&quot;socialTarget&quot;:&quot;https://www.lamborghini.com/en-en/wechat&quot;}" rel="noopener" href="https://www.lamborghini.com/en-en/wechat"><span class="sr-only">Wechat</span></a></div><div class="col-2 col-md-auto social-discord"><a aria-label="Discord" class="lif-discord css-8vz4p2" target="_blank" data-layer="{&quot;event&quot;:&quot;social&quot;,&quot;socialAction&quot;:&quot;visit&quot;,&quot;socialNetwork&quot;:&quot;discord&quot;,&quot;socialTarget&quot;:&quot;https://discord.gg/vet6ZBjpFd&quot;}" rel="noopener" href="https://discord.gg/vet6ZBjpFd"><span class="sr-only">Discord</span></a></div></div></div><div class="order-2 col-12"><ul class="disclaimer align-self-md-end"><li><p>Los valores de consumos y emisiones presentes en el sitio web se refieren a su IP geográfica. Dicho valor podría diferir de la realidad si navega a través de una VPN o si la ubicación de su proveedor de Internet no es exacta. Si cree que no está geolocalizado correctamente, contacte con su concesionario de referencia para obtener información válida en su territorio sobre consumos y emisiones.</p></li></ul></div><div class="order-3 col-12"><div class="body"><p>Copyright © 2024 Automobili Lamborghini S.p.A. una sociedad de accionista único sujeta a la dirección y coordinación de AUDI AG.</p><p>Todos los derechos reservados. Núm. IVA IT 00591801204</p><p></p><p>AVISO SOBRE OFERTAS ILEGALES DE SUPUESTAS ACCIONES DE AUTOMOBILI LAMBORGHINI S.P.A.</p><p>Automobili Lamborghini S.p.A. ha tenido noticia de que varios terceros de diferentes países están presuntamente ofreciendo acciones de Automobili Lamborghini S.p.A. Estas ofertas son ilegales y no provienen ni de Volkswagen Aktiengesellschaft ni de ninguna de sus filiales.</p></div></div></div><div class="row"></div></div></div></footer>
+
+
+  <!--BOOTSTRAP-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
+</body>
+</html>
+
