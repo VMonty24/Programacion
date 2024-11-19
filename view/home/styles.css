@@ -58,8 +58,6 @@ body{
     margin: 0;
   }
   
-  
-
 .nav-links {
     text-align: start;
 }
@@ -70,8 +68,7 @@ body{
   
 .nav .nav-link {
     color: #ffffff; /* Cambia el color de los enlaces */
-    font-size: 12px;
-    
+    font-size: 12px;  
 }
   
 .nav .nav-link:hover {
@@ -112,10 +109,11 @@ body{
 
 
 
+
 /*BANNER*/
 
 .banner{
-    background-image: url(/images/banner.jpg);
+    background-image: url(../images/banner.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -180,7 +178,7 @@ body{
     }
   }  
 
-  
+ 
 .card{
   border: transparent !important;
 }
@@ -207,14 +205,13 @@ body{
     padding: 15px;
 }
 
-
 .hexagono-borde-r {
   transform: rotate(180deg); /* Gira la flecha */
 }
 
 .icono-flecha-l:hover,
-.icono-flecha-r:hover {
-  content: url(/images/iconos/flecha\ negro\ .png); /* Imagen al hacer hover */
+  .icono-flecha-r:hover {
+  content: url(../images/iconos/flecha\ negro\ .png); /* Imagen al hacer hover */
   background-color: #ffffff !important;
 }
 
@@ -222,72 +219,64 @@ body{
   .carousel-control-prev {
     opacity: 1 !important; /* Elimina la opacidad */
     transition: none !important; /* Elimina la transición */
-
 }
 
+
+
+
 /* PUESTO VENTA */
+
 .puesto-venta {
-  background-image: url('/images/fondo_locales.png'); 
+  background-image: url('../images/fondo_locales.png'); 
   background-size: cover;
   background-position: center;
   position: relative;
   height: 500px;
   display: flex;
-  
+  flex-direction: column; /* Alinea los elementos verticalmente */
 }
 
-
-
 /* Estilo del texto */
-.sushi-text  {
+.sushi-text {
   font-size: 60px;
   font-weight: bold;
   color: #ffffff;
-  position: absolute; 
-  top: 0; 
-  margin: 20px; 
-
-
- 
+  margin: 40px 100px; 
 }
 
-/* Botón con forma de hexágono */
-
-.local-btn{
-  content: url(/images/iconos/icono_flecha_blanco.webp); 
-  background-color: #20202000; 
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); /* Forma de hexágono */
-  height: 60px;
+/* Estilo del botón */
+.icon-container {
   width: 60px;
-  padding: 15px;
-  transform: rotate(180deg);
-
-}
-
-.local-btn:hover {
-  content: url(/images/iconos/flecha\ negro\ .png); /* Imagen al hacer hover */
-  background-color: #ffffff !important;
-}
-
-.hexagono-borde-local{
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  background-color: #ffffff; /* Color del borde */
-  width: 62px; /* Ajusta el tamaño para que el borde quede alrededor */
-  height: 62px;
+  height: 60px;
+  cursor: pointer; /* Cambia el cursor al pasar sobre el SVG */
   display: flex;
-  align-items: center;
   justify-content: center;
-
-  
+  align-items: center;
+  margin-left: 100px;
 }
 
 .hexagon {
-  fill: #FF5733; /* Color del hexágono */
+  fill: transparent; /*Fondo blanco */
+  stroke: #ffffff; /* Borde negro */
+  stroke-width: 1.5px;
 }
 
 .icon {
-  stroke: #FFFFFF; /* Color del icono */
-  fill: none; /* Sin relleno para el icono */
+  fill: none;
+  stroke: #ffffff; /* Color de la flecha */
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-container:hover .hexagon {
+  fill: #ffffff; /* Cambia el color de fondo del hexágono al hacer hover */
+  stroke: #202020;
+  stroke-width: 1px;
+}
+
+.icon-container:hover .icon {
+  stroke: #202020; /* Color de la flecha */
 }
 
 
@@ -363,10 +352,6 @@ body{
   font-size: 20px;
   text-decoration: none;
 }
-
-
-
-
 
 
 

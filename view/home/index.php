@@ -1,3 +1,5 @@
+<?php?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,7 +23,7 @@
       
         <!-- Logo -->
       <a class="col-1" href="#">
-        <img src="/images/logo_black.jpg" class="logo" alt="Sushi one logo">
+        <img src="../images/logo_black.jpg" class="logo" alt="Sushi one logo">
       </a>
       
       <!-- Botón de colapso para pantallas pequeñas -->
@@ -51,13 +53,13 @@
       <!-- Iconos -->
       <div class="col-md-4 d-flex justify-content-end align-items-center icon-nav">
         <a class="nav-item me-4" href="#">
-          <img src="/images/iconos/icono_session_blanco.png" class="icono" alt="lupa">
+          <img src="../images/iconos/icono_session_blanco.png" class="icono" alt="lupa">
         </a>
         <a class="nav-item me-4" href="#">
-          <img src="/images/iconos/icono_carrito_blanco.png" class="icono" alt="carrito">
+          <img src="../images/iconos/icono_carrito_blanco.png" class="icono" alt="carrito">
         </a>
         <a class="nav-item me-4" href="#">
-          <img src="/images/iconos/icono_session_blanco.png" class="icono" alt="user">
+          <img src="../images/iconos/icono_session_blanco.png" class="icono" alt="user">
         </a>
       </div>
       
@@ -65,11 +67,6 @@
   </div>
 </nav>
 
-
-
-
-  
-  
 
 <!-- BANNER -->
 <div class="banner">
@@ -80,69 +77,73 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   
   <div class="carousel-inner">
+    <!-- Primer slide -->
     <div class="carousel-item active">
-      <div class="row">
-        <div class="col-4">
-          <div class="card">
+        <div class="card">
             <div class="img-wrapper">
-              <img src="/images/productos/Nigiris_Carrusel.jpg" alt="...">
+                <img src="../images/productos/Nigiris_Carrusel.jpg" alt="...">
             </div>
-          </div>
         </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="img-wrapper">
-              <img src="/images/productos/sushi_carruel.jpg" alt="...">
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="img-wrapper">
-              <img src="/images/productos/sushi_largo.jpg" alt="...">
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+
+    <!-- Segundo slide -->
     <div class="carousel-item">
-      <div class="row">
-        <div class="col-4">
-          <div class="card">
+        <div class="card">
             <div class="img-wrapper">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-1.jpg" alt="...">
+                <img src="../images/productos/sushi_carruel.jpg" alt="...">
             </div>
-          </div>
         </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="img-wrapper">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-2.jpg" alt="...">
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="img-wrapper">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-3.jpg" alt="...">
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+
+    <!-- Tercer slide -->
+    <div class="carousel-item">
+        <div class="card">
+            <div class="img-wrapper">
+                <img src="../images/productos/sushi_largo.jpg" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Cuarto slide -->
+    <div class="carousel-item">
+        <div class="card">
+            <div class="img-wrapper">
+                <img src="../images/imagen-carrousel.png" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Quinto slide -->
+    <div class="carousel-item">
+        <div class="card">
+            <div class="img-wrapper">
+                <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-2.jpg" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sexto slide -->
+    <div class="carousel-item">
+        <div class="card">
+            <div class="img-wrapper">
+                <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-2-card-3.jpg" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <div class="hexagono-borde-l">
-      <img class="icono-flecha-l" src="/images/iconos/icono_flecha_blanco.webp" alt="...">
+      <img class="icono-flecha-l" src="../images/iconos/icono_flecha_blanco.webp" alt="...">
       <span class="visually-hidden">Previous</span>
     </div>
   </button>
 
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
     <div class="hexagono-borde-r">
-      <img class="icono-flecha-r" src="/images/iconos/icono_flecha_blanco.webp" alt="...">
+      <img class="icono-flecha-r" src="../images/iconos/icono_flecha_blanco.webp" alt="...">
       <span class="visually-hidden">Next</span>
     </div>
   </button>
@@ -152,22 +153,21 @@
 
   <!-- PUESTO DE VENTA -->
 <div class="container-fluid justify-content-start puesto-venta">
-        <div>
-          <h2 class="sushi-text">ENCUENTRE SU<br>PUESTO DE VENTA</h2>
-        </div>
-        
-          <!-- <div class="hexagono-borde-local">
-          <a href="#" class="local-btn"></a>
-        </div> -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.464 58.271" width="100" height="100">
-          <g stroke-width="1.5" transform="translate(-1624 -187.923)">
-              <path d="M50.464 43.992L25.732 58.271 1 43.992V15.434L25.732 1.155l24.732 14.279z" 
-                    transform="translate(1623.5 187.345)" 
-                    class="hexagon on-dark"></path>
-              <path class="icon on-dark" d="M0 0l7.432 5.674L14.864 0" 
-                    transform="rotate(-90 935.432 -711.068)"></path>
-          </g>
-      </svg>
+  <div>
+    <h2 class="sushi-text">ENCUENTRE SU<br>PUESTO DE VENTA</h2>
+  </div>
+
+  <div class="icon-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.464 58.271" >
+      <g stroke-width="1.5" transform="translate(-1624 -187.923)">
+        <path d="M50.464 43.992L25.732 58.271 1 43.992V15.434L25.732 1.155l24.732 14.279z" 
+              transform="translate(1623.5 187.345)" 
+              class="hexagon"></path>
+        <path class="icon" d="M0 0l7.432 5.674L14.864 0" 
+              transform="rotate(-90 935.432 -711.068)"></path>
+      </g>
+    </svg>
+  </div>
 </div>
 
 
@@ -329,3 +329,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
 </body>
 </html>
+
