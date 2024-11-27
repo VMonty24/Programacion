@@ -442,3 +442,21 @@ footer.container-fluid.css-1r8ynqq {
   height: 17px;
 
 }
+
+
+
+
+/* ------------------ */
+/* ----- CARTA ----- */
+/* ------------------ */
+
+/* Estilo del botón-add */
+.icon-container-add {
+  width: 60px;
+  height: 60px;
+  cursor: pointer; /* Cambia el cursor al pasar sobre el SVG */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+}
