@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarContent">
       
         <!-- Logo -->
-      <a class="col-1" href="#">
+      <a class="col-1" href="?controller=producto">
         <img src="view/images/logo_black.jpg" class="logo" alt="Sushi one logo">
       </a>
       
@@ -35,10 +35,10 @@
       <!-- Menú de navegación -->
       <ul class="navbar-nav ms-4 col-md-5 d-flex flex-row align-items-center">
         <li class="nav-item me-4">
-          <a class="nav-link" href="#">INICIO</a>
+          <a class="nav-link" href="?controller=producto">INICIO</a>
         </li>
         <li class="nav-item me-4">
-          <a class="nav-link" href="#">CARTA</a>
+          <a class="nav-link" href="?controller=producto&action=carta">CARTA</a>
         </li>
         <li class="nav-item me-4">
           <a class="nav-link" href="#">LOCALES</a>

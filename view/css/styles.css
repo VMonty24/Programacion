@@ -7,6 +7,7 @@
 body{
     overflow-x: hidden;
 }
+
 /*NAVEGADOR*/
 /* Tamaño del logo */
 .logo {
@@ -281,7 +282,6 @@ body{
 
 
 
-
 /* OFERTAS */
 
 .offerts{
@@ -354,15 +354,6 @@ body{
 }
 
 
-
-
-
-
-
-
-
-
-
 /* FOOTER */
 /* Footer Container */
 footer.container-fluid.css-1r8ynqq {
@@ -411,8 +402,6 @@ footer.container-fluid.css-1r8ynqq {
   background-repeat: no-repeat;
 }
 
-
-
 /* Disclaimer Section */
 .disclaimer {
   margin-top: 20px;
@@ -435,12 +424,10 @@ footer.container-fluid.css-1r8ynqq {
   margin: 5px 0;
 }
 
-
 .icon-social{
   fill: #FFFFFF;
   width: 17px;
   height: 17px;
-
 }
 
 
@@ -451,6 +438,18 @@ footer.container-fluid.css-1r8ynqq {
 /* ------------------ */
 
 /* Estilo del botón-add */
+
+
+.card-img-top {
+  height: 225px; /* Altura fija */
+  object-fit: contain; /* Mantiene la relación de aspecto */
+}
+
+.fondo .card {
+  background-color: black; /* Fondo de las tarjetas negro */
+  color: white; /* Texto de las tarjetas blanco */
+}
+
 .icon-container-add {
   width: 60px;
   height: 60px;
@@ -459,4 +458,13 @@ footer.container-fluid.css-1r8ynqq {
   justify-content: center;
   align-items: center;
   margin-left: 100px;
+}
+.add-boton-stroke{
+  stroke: #ffffff;
+}
+
+.add-boton {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+
 }
