@@ -23,7 +23,7 @@
       
         <!-- Logo -->
       <a class="col-1" href="?controller=producto">
-        <img src="view/images/logo_black.jpg" class="logo" alt="Sushi one logo">
+        <img src="view/images/logo_black.svg" class="logo" alt="Sushi one logo">
       </a>
       
       <!-- Botón de colapso para pantallas pequeñas -->

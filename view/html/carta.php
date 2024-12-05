@@ -1,4 +1,7 @@
-<h1>CARTA</h1>
+
+
+
+<h1 class= "title_page">CARTA</h1>
 
 <div class="container fondo">
     <?php foreach ($productos as $index => $producto): ?>
@@ -12,7 +15,7 @@
             <img class="card-img-top" src="<?=$producto->getImage()?>" alt="<?=$producto->getNombre()?>">
             <div class="card-body d-flex justify-content-between">
                 <div style="width: 400px;">
-                    <h5 class="card-title"><?=$producto->getNombre()?></h5>
+                    <h5 class="card-title text-uppercase"><?=$producto->getNombre()?></h5>
                     <p class="card-text"><?=$producto->getDescripcion()?></p>  
                 </div>
                 <div class="icon-container-add">

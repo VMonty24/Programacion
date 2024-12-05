@@ -437,8 +437,12 @@ footer.container-fluid.css-1r8ynqq {
 /* ----- CARTA ----- */
 /* ------------------ */
 
-/* Estilo del botón-add */
-
+.title_page{
+  text-align: center;
+  font-size:60px;
+  font-weight: bold;
+  margin: 60px;
+}
 
 .card-img-top {
   height: 225px; /* Altura fija */
@@ -450,6 +454,14 @@ footer.container-fluid.css-1r8ynqq {
   color: white; /* Texto de las tarjetas blanco */
 }
 
+
+
+.card-text{
+  font-size: small;
+  padding-top: 5px;
+}
+
+/* Estilo del botón-add */
 .icon-container-add {
   width: 60px;
   height: 60px;
@@ -464,7 +476,18 @@ footer.container-fluid.css-1r8ynqq {
 }
 
 .add-boton {
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-
+  fill: #ffffff;
+  stroke: #ffffff;
 }
+
+.add-boton-stroke:hover{
+  fill: #ffffff;
+}
+
+.add-boton-stroke:hover .add-boton {
+  fill: #000000;
+  stroke: #000000;
+}
+
+
+
