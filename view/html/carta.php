@@ -1,7 +1,4 @@
-
-
-
-<h1 class= "title_page">CARTA</h1>
+<h1 class="title_page">CARTA</h1>
 
 <div class="container fondo">
     <?php foreach ($productos as $index => $producto): ?>
@@ -18,7 +15,9 @@
                     <h5 class="card-title text-uppercase"><?=$producto->getNombre()?></h5>
                     <p class="card-text"><?=$producto->getDescripcion()?></p>  
                 </div>
+                
                 <div class="icon-container-add">
+                    <a href="index.php?controller=Producto&action=addToCart&id=<?= $producto->getId() ?>" style="display: block; width: 100%; height: 100%;">
                         <!-- Icono SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.464 58.271">
                             <g class="add-boton-stroke" stroke-width="1.5" transform="translate(-1624 -187.923)">
@@ -29,7 +28,8 @@
                                 </g>
                             </g>
                         </svg>
-                    </div>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -39,6 +39,3 @@
         <?php endif; ?>
     <?php endforeach; ?>
 </div>
-
-
-

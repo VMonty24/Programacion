@@ -24,4 +24,28 @@ class ProductosDAO{
 
         return $productos;
     }
+
+    public static function getProductoById($id) {
+        // Realizamos la conexión a la DB
+        $con = DataBase::connect();
+        
+        // Preparamos la consulta SQL
+        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.productos WHERE id = ?");
+        $stmt->bind_param("i", $id);  // Asociar el parámetro al id
+    
+        // Ejecutamos la consulta
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        // Obtener el producto si existe
+        if ($producto = $result->fetch_object("Producto")) {
+            $con->close();
+            return $producto;
+        }
+    
+        $con->close();
+        return null; // Retorna null si no se encuentra el producto
+    }
+    
+
 }

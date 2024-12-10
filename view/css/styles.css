@@ -491,3 +491,170 @@ footer.container-fluid.css-1r8ynqq {
 
 
 
+/* ------------------ */
+/* ---- CARRITO ---- */
+/* ------------------ */
+
+/* Contenedor general */
+.cart-container {
+  background-color: #000; 
+  color: #fff; 
+  padding: 20px; 
+  margin: 20px auto; 
+  width: 90%; 
+  max-width: 800px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+/* Elementos del producto */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+}
+
+.item-info img {
+  width: 150px;
+  height: 80px;
+
+  margin-right: 20px;
+}
+
+.item-details h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+.item-details p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+}
+
+.item-actions button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.item-actions button:hover {
+  background-color: #666;
+}
+
+.item-actions span {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+.item-price {
+  margin-left: 20px;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Separadores */
+.separator {
+  border: 0;
+  height: 1px;
+  background-color: #fff;
+  margin: 10px 0;
+}
+
+/* Coste total */
+.cart-total {
+  text-align: right;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.cart-total p {
+  margin: 0;
+}
+
+.cart-total span {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ------ */
+/* PAGAR */
+/* ----- */
+/* Contenedor del formulario de pago */
+/* Contenedor del formulario de pago */
+.payment-section {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo de las etiquetas */
+h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Estilo de las filas con dos columnas */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espaciado entre las columnas */
+  margin-bottom: 20px;
+}
+
+/* Estilo de los grupos de entrada */
+.input-group {
+  width: 48%; /* Ajuste para dos columnas */
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #aeaeae;
+  background-color: #444;
+}
+
+/* Para dispositivos pequeños, ajustamos las columnas a una sola */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  .input-group {
+    width: 100%;
+  }
+}

@@ -1,4 +1,8 @@
-<?php?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -47,7 +51,7 @@
 
       <!-- Botón de pedido -->
       <div class="col-md-2 d-flex flex-end justify-content-end align-items-center col-2">
-        <a href="#" class="btn-1">EMPEZAR PEDIDO</a>
+        <a href="?controller=producto&action=carta" class="btn-1">EMPEZAR PEDIDO</a>
       </div>
       
       <!-- Iconos -->
@@ -55,7 +59,7 @@
         <a class="nav-item me-4" href="#">
           <img src="view/images/iconos/icono_session_blanco.png" class="icono" alt="lupa">
         </a>
-        <a class="nav-item me-4" href="#">
+        <a class="nav-item me-4" href="?controller=producto&action=carrito">
           <img src="view/images/iconos/icono_carrito_blanco.png" class="icono" alt="carrito">
         </a>
         <a class="nav-item me-4" href="#">
