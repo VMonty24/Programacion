@@ -9,13 +9,11 @@ class Usuario {
     public $telefono;
     public $direccion;
 
-    public function __construct($nombre, $apellidos, $password, $email, $telefono, $direccion) {
+    public function __construct($nombre, $apellidos, $password, $email) {
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->password = $password;
         $this->email = $email;
-        $this->telefono = $telefono;
-        $this->direccion = $direccion;
     }
 
     /**

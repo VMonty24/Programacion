@@ -6,7 +6,7 @@ include_once 'model/Usuario.php';
 class usuariosController {
 
     public function login() {
-        $views = 'view/html/login.php';
+        $views = 'view/html/login-register.php';
         include_once 'view/main.php';
     }
 
@@ -38,24 +38,31 @@ class usuariosController {
     }
     
     
-    public function doRegister() {
+    public function doRegister(){
+        var_dump($_POST);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nombre = $_POST['nombre'];
-            $apellidos = $_POST['apellidos'];
+            // Capturar el campo de nombre completo
+            $nombre_apellidos = $_POST['nombre_apellidos'];
+
+            // Dividir en nombre y apellidos
+            $partes = explode(' ', $nombre_apellidos, 2); // Divide en máximo 2 partes
+            $nombre = $partes[0]; // Lo que está antes del primer espacio es el nombre
+            $apellidos = isset($partes[1]) ? $partes[1] : ''; // Todo lo que está después es el apellido (si existe)
+
+            // Capturar los demás datos del formulario
             $email = $_POST['email'];
-            $telefono = $_POST['telefono'] ?? '';
-            $direccion = $_POST['direccion'] ?? '';
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    
+
             // Crear un objeto Usuario
-            $usuario = new Usuario($nombre, $apellidos, $password, $email, $telefono, $direccion);
-    
+            $usuario = new Usuario($nombre, $apellidos, $password, $email);
+
             // Llamar al método para insertar el usuario en la base de datos
             $exito = UsuariosDAO::insertarUsuario($usuario);
-    
-            if ($exito = true) {
+
+            // Verificar si el registro fue exitoso
+            if ($exito === true) {
                 header('Location: ?controller=usuarios&action=login');
-                exit();  // Redirige al login si el registro fue exitoso
+                exit(); // Redirige al login si el registro fue exitoso
             } else {
                 $error = 'Hubo un problema al registrar el usuario.';
                 $views = 'view/html/register.php';
@@ -63,7 +70,5 @@ class usuariosController {
             }
         }
     }
-    
 
 }
-?>

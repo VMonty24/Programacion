@@ -12,7 +12,7 @@ class UsuariosDAO {
         $sql = "SELECT * FROM users WHERE email = ?";
         
         $stmt = $con->prepare($sql);
-        $stmt->bind_param('s', $email);  // 's' para indicar que el parámetro es una cadena
+        $stmt->bind_param('s', $email);  // 's' para indicar que el parámetro es un string
         
         $stmt->execute();
         $result = $stmt->get_result();
@@ -20,12 +20,10 @@ class UsuariosDAO {
         if ($row = $result->fetch_assoc()) {
             // Crea un objeto Usuario sin el id, ya que es generado automáticamente
             $usuario = new Usuario(
-                $row['nombre'],        // nombre
-                $row['apellidos'],     // apellidos
-                $row['password'],      // password
-                $row['email'],         // email
-                $row['telefono'],      // telefono
-                $row['direccion']      // direccion
+                $row['nombre'],      
+                $row['apellidos'],   
+                $row['password'],      
+                $row['email'],         
             );
             return $usuario;  // Retorna el objeto Usuario
         }
@@ -39,20 +37,18 @@ class UsuariosDAO {
     $con = DataBase::connect();
 
     // Preparamos la consulta SQL
-    $sql = "INSERT INTO users (nombre, apellidos, password, email, telefono, direccion) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (nombre, apellidos, password, email) 
+            VALUES (?, ?, ?, ?)";
 
     $stmt = $con->prepare($sql);
     
     // Enlazamos los parámetros con los tipos correspondientes
-    $stmt->bind_param('ssssss', 
+    $stmt->bind_param('ssss', 
         $usuario->getNombre(),
         $usuario->getApellidos(),
         $usuario->getPassword(),
-        $usuario->getEmail(),
-        $usuario->getTelefono(),
-        $usuario->getDireccion(),
-        
+        $usuario->getEmail()
+       
     );
 
     // Ejecutamos la consulta

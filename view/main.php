@@ -15,6 +15,10 @@ if (session_status() == PHP_SESSION_NONE) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- TIPOGRACFIA ROBOT -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--Boxicons CDN-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
   </head>
 <body>
 
@@ -62,7 +66,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <a class="nav-item me-4" href="?controller=producto&action=carrito">
           <img src="view/images/iconos/icono_carrito_blanco.png" class="icono" alt="carrito">
         </a>
-        <a class="nav-item me-4" href="#">
+        <a class="nav-item me-4" href="?controller=usuarios&action=login">
           <img src="view/images/iconos/icono_session_blanco.png" class="icono" alt="user">
         </a>
       </div>
@@ -202,6 +206,9 @@ if (session_status() == PHP_SESSION_NONE) {
   
 
 
+  
+  <!--Script.js-->
+  <script src="views/css/rotation.js"></script>
   <!--BOOTSTRAP-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>  
 </body>

@@ -46,6 +46,18 @@ class ProductosDAO{
         $con->close();
         return null; // Retorna null si no se encuentra el producto
     }
+
+
+    public static function guardarProducto($producto) {
+        // Realizamos la conexión a la DB
+        $con = DataBase::connect();
+    
+        // Preparamos la consulta SQL
+        $sql = "INSERT INTO RESTAURANTE.pedidos (nombre, descripcion, precio, imagen) 
+                VALUES (?, ?, ?, ?)";
+    
+
+    }
     
 
 }
