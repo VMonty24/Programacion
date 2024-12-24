@@ -23,7 +23,7 @@
                     <i class='bx bxs-lock-alt' ></i>
                 </div>
 
-                <button type="submit" class="btn animation" style="--i:3; --j:24">Login</button>
+                <button type="submit" class="btn animation btn-f" style="--i:3; --j:24">Login</button>
 
                 <div class="linkTxt animation" style="--i:5; --j:25">
                     <p>¿No tienes cuenta? <a href="#" class="register-link">Registrarse</a></p>
@@ -64,7 +64,7 @@
                     <i class='bx bxs-lock-alt'></i>
                 </div>
 
-                <button type="submit" class="btn animation" style="--i:21;--j:4">Registrarse</button>
+                <button type="submit" class="btn animation btn-f" style="--i:21;--j:4">Registrarse</button>
 
                 <div class="linkTxt animation" style="--i:22; --j:5">
                     <p>¿Ya tienes cuenta? <a href="#" class="login-link">Iniciar session</a></p>

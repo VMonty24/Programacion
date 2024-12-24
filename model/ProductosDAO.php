@@ -48,16 +48,25 @@ class ProductosDAO{
     }
 
 
-    public static function guardarProducto($producto) {
-        // Realizamos la conexión a la DB
+    
+    public static function insertarPedido($idUser, $total, $numeroPago) {
+        // Conectarse a la base de datos
         $con = DataBase::connect();
     
-        // Preparamos la consulta SQL
-        $sql = "INSERT INTO RESTAURANTE.pedidos (nombre, descripcion, precio, imagen) 
-                VALUES (?, ?, ?, ?)";
+        // Consulta SQL para insertar el pedido
+        $sql = "INSERT INTO pedidos (id_usuario, total, metodo_pago) VALUES (?, ?, ?)";
     
-
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param('isd', $idUser, $total, $numeroPago); // 'i' para ID, 'd' para decimal, 's' para string
+    
+        $resultado = $stmt->execute();
+        $stmt->close();
+        $con->close();
+    
+        return $resultado;
     }
+    
+    
     
 
 }

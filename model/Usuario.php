@@ -1,13 +1,13 @@
 <?php
 
 class Usuario {
-    public $id;
-    public $nombre;
-    public $apellidos;
-    public $password;
-    public $email;
-    public $telefono;
-    public $direccion;
+    protected $id;
+    protected $nombre;
+    protected $apellidos;
+    protected $password;
+    protected $email;
+    protected $telefono;
+    protected $direccion;
 
     public function __construct($nombre, $apellidos, $password, $email) {
         $this->nombre = $nombre;

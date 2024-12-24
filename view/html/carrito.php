@@ -53,42 +53,53 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 
 <div class="payment-section">
   <h2>DATOS DE ENVIO</h2>
-  <div class="form-row">
-    <div class="input-group">
-      <label for="nombre">NOMBRE:</label>
-      <input type="text" id="nombre" name="nombre">
+  <form method="POST" action="?controller=Producto&action=savePedido">
+    <div class="form-row">
+      <div class="input-group">
+        <label for="nombre">NOMBRE:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="input-group">
+        <label for="telefono">TELEFONO:</label>
+        <input type="text" id="telefono" name="telefono" required>
+      </div>
     </div>
-    <div class="input-group">
-      <label for="telefono">TELEFONO:</label>
-      <input type="text" id="telefono" name="telefono">
+    <div class="form-row">
+      <div class="input-group">
+        <label for="correo">CORREO:</label>
+        <input type="email" id="correo" name="correo" required>
+      </div>
+      <div class="input-group">
+        <label for="direccion">DIRECCION:</label>
+        <input type="text" id="direccion" name="direccion" required>
+      </div>
     </div>
-  </div>
-  <div class="form-row">
-    <div class="input-group">
-      <label for="correo">CORREO:</label>
-      <input type="email" id="correo" name="correo">
-    </div>
-    <div class="input-group">
-      <label for="direccion">DIRECCION:</label>
-      <input type="text" id="direccion" name="direccion">
-    </div>
-  </div>
-
-  <h2>METODO DE PAGO</h2>
-  <div class="form-row">
-    <div class="input-group">
-      <label for="numero-tarjeta">NUMERO TARJETA:</label>
-      <input type="text" id="numero-tarjeta" name="numero-tarjeta">
-    </div>
-    <div class="input-group">
-      <label for="fecha-caducidad">FECHA CADUCIDAD:</label>
-      <input type="text" id="fecha-caducidad" name="fecha-caducidad">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="input-group">
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" name="cvv">
-    </div>
-  </div>
+    
+    <h2>METODO DE PAGO</h2>
+      <div class="form-row">
+        <div class="input-group">
+          <label for="numero-tarjeta">NUMERO TARJETA:</label>
+          <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
+        </div>
+        <div class="input-group">
+          <label for="fecha-caducidad">FECHA CADUCIDAD:</label>
+          <input type="text" id="fecha-caducidad" name="fecha-caducidad" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" name="cvv" required>
+        </div>
+      </div>
+      <button class="btn-pay" type="submit">Enviar</button>
+    </form>
 </div>
+
+<?php
+// Hacer un var_dump del carrito
+echo "<pre>";
+var_dump($_SESSION['carrito']);
+echo "</pre>";
+
+?>

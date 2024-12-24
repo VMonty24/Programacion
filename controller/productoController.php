@@ -36,7 +36,7 @@ class productoController{
             if ($producto) { // Solo agregar si se encuentra el producto
                 // Iniciar carrito si no está definido
                 if (!isset($_SESSION['carrito'])) {
-                    $_SESSION['carrito'] = array();
+                    $_SESSION['carrito'] = [];
                 }
     
                 // Comprobar si el producto ya está en el carrito
@@ -53,14 +53,14 @@ class productoController{
     
                 // Si el producto no está en el carrito, agregarlo como un array
                 if (!$found) {
-                    $_SESSION['carrito'][] = array(
+                    $_SESSION['carrito'][] = [
                         'id' => $producto->getId(),          
                         'nombre' => $producto->getNombre(),
                         'descripcion' => $producto->getDescripcion(),
                         'precio' => $producto->getPrecio(),
                         'image' => $producto->getImage(),
                         'cantidad' => 1 // Inicializamos la cantidad en 1
-                    );
+                    ];
                 }
     
                 // Redirigir a la carta
@@ -97,6 +97,44 @@ class productoController{
         // Redirigir de vuelta al carrito
         header("Location: ?controller=Producto&action=carrito");
         exit;
+    }
+    
+    
+    public function savePedido() {
+        session_start();
+
+        // Verificar si el carrito no está vacío
+        if (empty($_SESSION['carrito'])) {
+            echo "El carrito está vacío.";
+            return;
+        }
+    
+        // Obtener el número de tarjeta desde el formulario
+        $numeroPago = $_POST['numero-tarjeta'];
+    
+        // Calcular el total del pedido
+        $total = 0;
+        foreach ($_SESSION['carrito'] as $item) {
+            $total += $item['precio'] * $item['cantidad'];
+        }
+    
+        // Obtener el ID del usuario si está autenticado, si no, será null
+        $idUser = null;
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $idUser = $usuario->getId(); // Usamos el ID del usuario autenticado
+        }
+    
+        // Guardar el pedido en la base de datos
+        ProductosDAO::insertarPedido($idUser, $total, $numeroPago);
+    
+        // Vaciar el carrito después de guardar el pedido
+        $_SESSION['carrito'] = [];
+    
+        // Redirigir o mostrar mensaje de éxito
+        echo "Pedido realizado con éxito.";
+        header('Location: ?controller=producto&action=index');
+        exit();
     }
     
     

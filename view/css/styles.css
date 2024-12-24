@@ -88,7 +88,7 @@ body{
 /* BOTON 1 */
 
 .btn-1{
-    color: #ffffff;
+    color: #ffffff !important;
     background-color: #202020;
     padding: 8px;
     font-size: 12px;
@@ -100,7 +100,7 @@ body{
 }
 
 .btn-1:hover{
-    color: #121212;
+    color: #121212 !important;
     background-color: #ffffff;
     padding: 8px;
     font-size: 12px;
@@ -648,6 +648,33 @@ h2 {
   background-color: #444;
 }
 
+
+.btn-pay{
+  color: #ffffff;
+  background-color: #202020;
+  padding: 8px;
+  font-size: 12px;
+  text-decoration: none;
+  border-width: 1px; 
+  border-style: solid; 
+  border-color: #ffffff;
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.btn-pay:hover{
+  color: #121212;
+  background-color: #ffffff;
+  padding: 8px;
+  font-size: 12px;
+  text-decoration: none;
+  border-color: #ffffff;
+  width: 25%;
+}
+
+
 /* Para dispositivos pequeños, ajustamos las columnas a una sola */
 @media (max-width: 768px) {
   .form-row {
@@ -784,7 +811,7 @@ h2 {
     color: var(--lightBulue);
 }
 
-form button{
+.btn-f{
     width: 100%;
     height: 45px;
     background-color: var(--black) !important;
@@ -799,7 +826,7 @@ form button{
 }
 
 /* eliminar si no funciona como ahora basicamente */
-form button:hover{
+.btn-f:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
 }
 
