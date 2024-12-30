@@ -9,7 +9,7 @@
 
             <h2 class="title animation" style="--i:0; --j:21">Login</h2>
 
-            <form action="#">
+            <form action="?controller=usuarios&action=doLogin" method="POST">
 
                 <div class="input-box animation" style="--i:1; --j:22">
                     <input type="email" id="email" name="email" required>

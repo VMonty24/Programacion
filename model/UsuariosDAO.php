@@ -20,18 +20,36 @@ class UsuariosDAO {
         if ($row = $result->fetch_assoc()) {
             // Crea un objeto Usuario
             $usuario = new Usuario(
-                $row['id'],
+          
                 $row['nombre'],      
                 $row['apellidos'],   
                 $row['password'],      
                 $row['email'],         
             );
+
+            $usuario->setId($row['id']);  // Asigna el id al objeto Usuario
+            $usuario->setTelefono($row['telefono']);  // Asigna el teléfono al objeto Usuario
+            $usuario->setDireccion($row['direccion']);  // Asigna la dirección al objeto Usuario
+
             return $usuario;  // Retorna el objeto Usuario
         }
         
         return null;  // Retorna null si no se encuentra el usuario
     }
     
+    public static function checkEmail($email) {
+        $con = DataBase::connect();
+        $sql = "SELECT COUNT(*) as total FROM users WHERE email = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['total'] > 0; // Devuelve true si el email existe
+    }
+    
+    
+
 
     public static function insertarUsuario($usuario) {
     // Realizamos la conexión a la DB
@@ -81,6 +99,34 @@ public static function obtenerIdPorEmail($email) {
     
     return null;  // Retorna null si no se encuentra el usuario
 }
+
+
+
+public static function actualizarUsuario($usuario) {
+    // Realizamos la conexión a la DB
+    $con = DataBase::connect();
+
+    // Preparamos la consulta SQL
+    $sql = "UPDATE users SET nombre = ?, apellidos = ?, telefono = ?, direccion = ? WHERE id = ?";
+
+    $stmt = $con->prepare($sql);
+    
+    // Enlazamos los parámetros con los tipos correspondientes
+    $stmt->bind_param('ssssi', 
+        $usuario->getNombre(),
+        $usuario->getApellidos(),
+        $usuario->getTelefono(),
+        $usuario->getDireccion(),
+        $usuario->getId()
+    );
+
+    // Ejecutamos la consulta
+    $result = $stmt->execute();
+
+    $con->close();
+
+    return $result;  // Devuelve true si la actualización fue exitosa   
+    }
 
 }
 ?>

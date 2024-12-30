@@ -10,12 +10,19 @@ class usuariosController {
         include_once 'view/main.php';
     }
 
-    public function register() {
-        $views = 'view/html/register.php';
-        include_once 'view/main.php';
-    }
+    public function userDetails() {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            $views = 'view/html/user.php';
+            include_once 'view/main.php';
+        } else {
+            header('Location: ?controller=usuarios&action=login');
+        }
+    }   
 
     public function doLogin() {
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -23,50 +30,90 @@ class usuariosController {
             $usuario = UsuariosDAO::obtenerPorEmail($email);
     
             if ($usuario && password_verify($password, $usuario->getPassword())) {
-                session_start();
                 $_SESSION['usuario'] = $usuario;
                 // Verifica que la sesión se haya iniciado correctamente
-                error_log('Usuario autenticado: ' . $_SESSION['usuario']->getEmail());
+                echo '<script>alert("Correo o contraseña incorrectos.");</script>';
                 header('Location: ?controller=producto&action=index');
                 exit();
             } else {
-                echo 'Correo o contraseña incorrectos.';
-                $views = 'view/html/login.php';
-                include_once 'view/main.php';
+                echo '<script>alert("Correo o contraseña incorrectos.");</script>';
+                $this->login();
             }
         }
     }
     
     
-    public function doRegister(){
-        var_dump($_POST);
+    public function doRegister() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Capturar el campo de nombre completo
             $nombre_apellidos = $_POST['nombre_apellidos'];
-
+    
             // Dividir en nombre y apellidos
-            $partes = explode(' ', $nombre_apellidos, 2); // Divide en máximo 2 partes
-            $nombre = $partes[0]; // Lo que está antes del primer espacio es el nombre
-            $apellidos = isset($partes[1]) ? $partes[1] : ''; // Todo lo que está después es el apellido (si existe)
-
+            $partes = explode(' ', $nombre_apellidos, 2);
+            $nombre = $partes[0];
+            $apellidos = isset($partes[1]) ? $partes[1] : '';
+    
             // Capturar los demás datos del formulario
             $email = $_POST['email'];
+    
+            // Comprobar si el email ya existe
+            if (UsuariosDAO::checkEmail($email)) {
+                echo '<script>alert("El email ya está registrado.");</script>';
+                $this->login();
+                return;
+            }
+    
+            // Redirigir si el email es admin@admin.com
+            if ($email === 'admin@admin.com') {
+                header('Location: ?controller=admin&action=dashboard');
+                exit();
+            }
+    
+            // Continuar con el registro
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-            // Crear un objeto Usuario
             $usuario = new Usuario($nombre, $apellidos, $password, $email);
-
-            // Llamar al método para insertar el usuario en la base de datos
             $exito = UsuariosDAO::insertarUsuario($usuario);
-
-            // Verificar si el registro fue exitoso
+    
             if ($exito === true) {
-                header('Location: ?controller=usuarios&action=login');
-                exit(); // Redirige al login si el registro fue exitoso
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                header("Location:".url_base."?controller=producto");
+                exit();
             } else {
-                $error = 'Hubo un problema al registrar el usuario.';
+                echo '<script>alert("Hubo un problema al registrar el usuario.");</script>';
                 $views = 'view/html/register.php';
                 include_once 'view/main.php';
+            }
+        }
+    }
+    
+    public function logout() {
+        session_start();
+        session_destroy();
+        header('Location: ?controller=usuarios&action=login');
+    }
+
+    public function actualizarUsuario() {
+        session_start();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $usuario = $_SESSION['usuario'];
+            $usuario->setNombre($_POST['nombre']);
+            $usuario->setApellidos($_POST['apellidos']);
+            $usuario->setTelefono($_POST['telefono']);
+            $usuario->setDireccion($_POST['direccion']);
+    
+
+            $exito = UsuariosDAO::actualizarUsuario($usuario);
+    
+            if ($exito === true) {
+                $_SESSION['usuario'] = $usuario;
+                $_SESSION['mensaje'] = "Perfil actualizado correctamente.";
+                header('Location: ?controller=usuarios&action=userDetails');
+                exit();
+            } else {
+                $_SESSION['mensaje'] = "Hubo un problema al actualizar el perfil.";
+                $this->userDetails();
             }
         }
     }

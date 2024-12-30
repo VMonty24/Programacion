@@ -16,8 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <!-- TIPOGRACFIA ROBOT -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!--Boxicons CDN-->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   
 
   </head>
 <body>
@@ -60,7 +59,7 @@ if (session_status() == PHP_SESSION_NONE) {
       
       <!-- Iconos -->
       <div class="col-md-4 d-flex justify-content-end align-items-center icon-nav">
-        <a class="nav-item me-4" href="#">
+        <a class="nav-item me-4" href="?controller=usuarios&action=userDetails">
           <img src="view/images/iconos/icono_session_blanco.png" class="icono" alt="lupa">
         </a>
         <a class="nav-item me-4" href="?controller=producto&action=carrito">

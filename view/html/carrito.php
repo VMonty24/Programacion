@@ -4,6 +4,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+
+// Verificar si la sesión contiene el usuario
+if (isset($_SESSION['usuario'])) {
+  // El usuario está autenticado
+  var_dump($_SESSION['usuario']);
+} else {
+  echo 'No estás autenticado. Por favor, inicia sesión.';
+}
+
 // Verificar si el carrito está definido y no está vacío
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 ?>
@@ -100,6 +109,8 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 // Hacer un var_dump del carrito
 echo "<pre>";
 var_dump($_SESSION['carrito']);
+echo "------------";
+var_dump($_SESSION['usuario']);
 echo "</pre>";
 
 ?>

@@ -102,10 +102,10 @@ class productoController{
     
     public function savePedido() {
         session_start();
-
+    
         // Verificar si el carrito no está vacío
         if (empty($_SESSION['carrito'])) {
-            echo "El carrito está vacío.";
+            echo "El carrito está vacío. Por favor, añade productos antes de realizar un pedido.";
             return;
         }
     
@@ -118,24 +118,34 @@ class productoController{
             $total += $item['precio'] * $item['cantidad'];
         }
     
-        // Obtener el ID del usuario si está autenticado, si no, será null
+        // Obtener el ID del usuario si está autenticado, si no, será null (para pedidos de invitados)
         $idUser = null;
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
-            $idUser = $usuario->getId(); // Usamos el ID del usuario autenticado
+    
+            // Asegurarse de que el objeto usuario tiene un método para obtener el ID
+            if (method_exists($usuario, 'getId')) {
+                $idUser = $usuario->getId();
+            }
         }
     
         // Guardar el pedido en la base de datos
-        ProductosDAO::insertarPedido($idUser, $total, $numeroPago);
+        $pedidoExitoso = ProductosDAO::insertarPedido($idUser, $total, $numeroPago);
     
-        // Vaciar el carrito después de guardar el pedido
-        $_SESSION['carrito'] = [];
+        // Verificar si el pedido se guardó con éxito
+        if ($pedidoExitoso) {
+            // Vaciar el carrito después de guardar el pedido
+            $_SESSION['carrito'] = [];
     
-        // Redirigir o mostrar mensaje de éxito
-        echo "Pedido realizado con éxito.";
-        header('Location: ?controller=producto&action=index');
-        exit();
+            // Redirigir
+            header('Location: ?controller=producto&action=index');
+            exit();
+        } else {
+            echo "<script>alert('Hubo un problema al guardar el pedido. Por favor, inténtalo de nuevo.');</script>";
+            $this->carrito();
+        }
     }
+    
     
     
     
