@@ -1,63 +1,65 @@
 <?php
-// Iniciar sesión si no está ya iniciada
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-
-// Verificar si la sesión contiene el usuario
-if (isset($_SESSION['usuario'])) {
-  // El usuario está autenticado
-  var_dump($_SESSION['usuario']);
-} else {
-  echo 'No estás autenticado. Por favor, inicia sesión.';
-}
-
 // Verificar si el carrito está definido y no está vacío
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 ?>
 
 <div class="cart-container">
-    <?php if (!empty($carrito)): ?>
-        <?php foreach ($carrito as $item): ?>
-            <!-- Producto dinámico -->
-            <div class="cart-item">
-                <div class="item-info">
-                    <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="Imagen del producto">
-                    <div class="item-details">
-                        <h3><?php echo htmlspecialchars($item['nombre']); ?></h3>
-                        <p><?php echo htmlspecialchars($item['descripcion']); ?></p>
-                    </div>
-                </div>
-                <div class="item-actions">
-                    <button class="btn btn-outline-light btn-sm" onclick="window.location.href='?controller=Producto&action=removeFromCart&id=<?php echo $item['id']; ?>'">-</button>
-                    <span>x<?php echo $item['cantidad']; ?></span>
-                    <button class="btn btn-outline-light btn-sm" onclick="window.location.href='?controller=Producto&action=addToCart&id=<?php echo $item['id']; ?>'">+</button>
-                    <p class="item-price"><?php echo number_format($item['precio'] * $item['cantidad'], 2); ?>€</p>
-                </div>
-            </div>
-            <!-- Línea de separación -->
-            <hr class="separator">
-        <?php endforeach; ?>
-
-        <!-- Coste Total -->
-        <div class="cart-total">
-            <p>COSTE TOTAL DEL PEDIDO 
-                <span>
-                    <?php
-                    // Calcular el coste total
-                    $total = 0;
-                    foreach ($carrito as $item) {
-                        $total += $item['precio'] * $item['cantidad'];
-                    }
-                    echo number_format($total, 2) . '€';
-                    ?>
-                </span>
-            </p>
+  <?php if (!empty($carrito)): ?>
+    <?php foreach ($carrito as $item): ?>
+      <!-- Producto dinámico -->
+      <div class="cart-item">
+        <div class="item-info">
+          <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="Imagen del producto">
+          <div class="item-details">
+            <h3><?php echo htmlspecialchars($item['nombre']); ?></h3>
+            <p><?php echo htmlspecialchars($item['descripcion']); ?></p>
+          </div>
         </div>
-    <?php else: ?>
-        <p style="text-align: center; color: #fff;">El carrito está vacío.</p>
-    <?php endif; ?>
+        <div class="item-actions">
+          <button class="btn btn-outline-light btn-sm" onclick="window.location.href='?controller=Producto&action=removeFromCart&id=<?php echo $item['id']; ?>'">-</button>
+          <span>x<?php echo $item['cantidad']; ?></span>
+          <button class="btn btn-outline-light btn-sm" onclick="window.location.href='?controller=Producto&action=addToCart&id=<?php echo $item['id']; ?>'">+</button>
+          <p class="item-price"><?php echo number_format($item['precio'] * $item['cantidad'], 2); ?>€</p>
+        </div>
+      </div>
+      <!-- Línea de separación -->
+      <hr class="separator">
+    <?php endforeach; ?>
+
+    <!-- Coste Total -->
+    <div class="cart-total">
+      <p>COSTE TOTAL DEL PEDIDO
+        <span>
+          <?php
+          // Calcular el coste total
+          $total = productoController::calcTotal();
+          echo number_format($total, 2) . '€';
+          ?>
+        </span>
+      </p>
+      
+      <?php
+if (isset($_SESSION['carrito'])) {
+    $suma = 0;
+    foreach ($_SESSION['carrito'] as $item) {
+        $suma += $item['precio'] * $item['cantidad'];
+    }
+
+    if ($total != $suma) { ?>
+        <p>
+            PRECIO SIN DESCUENTO
+            <span>
+                <?php echo number_format($suma, 2) . '€'; ?>
+            </span>
+        </p>
+    <?php }
+}
+?>
+
+    </div>
+  <?php else: ?>
+    <p style="text-align: center; color: #fff;">El carrito está vacío.</p>
+  <?php endif; ?>
 </div>
 
 <div class="payment-section">
@@ -83,34 +85,24 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
         <input type="text" id="direccion" name="direccion" required>
       </div>
     </div>
-    
+
     <h2>METODO DE PAGO</h2>
-      <div class="form-row">
-        <div class="input-group">
-          <label for="numero-tarjeta">NUMERO TARJETA:</label>
-          <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
-        </div>
-        <div class="input-group">
-          <label for="fecha-caducidad">FECHA CADUCIDAD:</label>
-          <input type="text" id="fecha-caducidad" name="fecha-caducidad" required>
-        </div>
+    <div class="form-row">
+      <div class="input-group">
+        <label for="numero-tarjeta">NUMERO TARJETA:</label>
+        <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
       </div>
-      <div class="form-row">
-        <div class="input-group">
-          <label for="cvv">CVV:</label>
-          <input type="text" id="cvv" name="cvv" required>
-        </div>
+      <div class="input-group">
+        <label for="fecha-caducidad">FECHA CADUCIDAD:</label>
+        <input type="text" id="fecha-caducidad" name="fecha-caducidad" required>
       </div>
-      <button class="btn-pay" type="submit">Enviar</button>
-    </form>
+    </div>
+    <div class="form-row">
+      <div class="input-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required>
+      </div>
+    </div>
+    <button class="btn-pay" type="submit">Enviar</button>
+  </form>
 </div>
-
-<?php
-// Hacer un var_dump del carrito
-echo "<pre>";
-var_dump($_SESSION['carrito']);
-echo "------------";
-var_dump($_SESSION['usuario']);
-echo "</pre>";
-
-?>

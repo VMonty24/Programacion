@@ -1,3 +1,12 @@
+<?php
+if (isset($_SESSION['mensaje'])) {
+  echo '<script>
+          alert("' . htmlspecialchars($_SESSION['mensaje']) . '");
+      </script>';
+  unset($_SESSION['mensaje']);
+}
+?>
+
 <!-- BANNER -->
 <div class="banner">
   <h1 class="title "><b>SUSHI ONE</b></h1>

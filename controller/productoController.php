@@ -99,6 +99,40 @@ class productoController{
         exit;
     }
     
+    public function calcTotal() {
+        $total = 0;
+        if (isset($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $item) {
+                $total += $item['precio'] * $item['cantidad'];
+            }
+        }
+
+        //Aplicar ofertas a usuarios
+        if (isset($_SESSION['usuario'])){
+            $descuento = 0;
+            $diaActual = date('N'); // Devuelve el día de la semana (1: lunes, 7: domingo)
+            if ($diaActual == 4) { // Jueves es 4
+                $descuento += $total * 0.10;
+            }
+        
+            // Aplicar descuento para nuevos usuarios (-25%)
+            if (isset($_SESSION['usuario']) && method_exists($_SESSION['usuario'], 'getId')) {
+                $usuarioId = $_SESSION['usuario']->getId();
+                $esNuevoUsuario = UsuariosDAO::contarPedidos($usuarioId); // Crear método para verificar esto
+                if ($esNuevoUsuario === 0) {
+                    $descuento += $total * 0.25;
+                }
+            }
+
+            $total -= $descuento;
+
+        }
+
+        
+
+        return $total;
+    }
+ 
     
     public function savePedido() {
         session_start();
@@ -111,12 +145,10 @@ class productoController{
     
         // Obtener el número de tarjeta desde el formulario
         $numeroPago = $_POST['numero-tarjeta'];
-    
-        // Calcular el total del pedido
-        $total = 0;
-        foreach ($_SESSION['carrito'] as $item) {
-            $total += $item['precio'] * $item['cantidad'];
-        }
+        
+
+        // Calcular el total del pedido usando el método calcTotal
+        $total = $this->calcTotal();
     
         // Obtener el ID del usuario si está autenticado, si no, será null (para pedidos de invitados)
         $idUser = null;
@@ -153,3 +185,5 @@ class productoController{
     
 
 }
+
+

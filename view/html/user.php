@@ -1,12 +1,4 @@
 <div class="perfil-container">
-    <?php
-    if (isset($_SESSION['mensaje'])) {
-        echo '<script>
-                alert("' . htmlspecialchars($_SESSION['mensaje']) . '");
-            </script>';
-        unset($_SESSION['mensaje']);
-    }
-    ?>
     <h1 class="perfil-titulo">Mi Perfil</h1>
     <form action="?controller=usuarios&action=actualizarUsuario" method="POST" class="perfil-formulario">
         <div class="perfil-campo">

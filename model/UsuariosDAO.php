@@ -78,30 +78,6 @@ class UsuariosDAO {
     return $result;  // Devuelve true si la inserción fue exitosa
 }
 
-
-//borrar si no se usa, coo ahora
-public static function obtenerIdPorEmail($email) {
-    // Conectarse a la base de datos
-    $con = DataBase::connect();
-    
-    // Consulta para obtener el id del usuario por su correo
-    $sql = "SELECT id FROM users WHERE email = ?";
-    
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param('s', $email);  // 's' para indicar que el parámetro es un string
-    
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($row = $result->fetch_assoc()) {
-        return $row['id'];  // Retorna el id del usuario
-    }
-    
-    return null;  // Retorna null si no se encuentra el usuario
-}
-
-
-
 public static function actualizarUsuario($usuario) {
     // Realizamos la conexión a la DB
     $con = DataBase::connect();
@@ -127,6 +103,34 @@ public static function actualizarUsuario($usuario) {
 
     return $result;  // Devuelve true si la actualización fue exitosa   
     }
+
+    
+
+    //Contar pedidos de un usuario
+    public static function contarPedidos($idUser) {
+        // Realizamos la conexión a la DB
+        $con = DataBase::connect();
+        
+        // Preparamos la consulta SQL
+        $sql = "SELECT COUNT(*) as total FROM pedidos WHERE id_usuario = ?";
+        
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param('i', $idUser);  // 'i' para ID
+        
+        // Ejecutamos la consulta
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        // Obtenemos el total de pedidos
+        $row = $result->fetch_assoc();
+        $total = $row['total'];
+        
+        $con->close();
+        
+        return $total;
+    }
+
+
 
 }
 ?>

@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -59,14 +60,14 @@ if (session_status() == PHP_SESSION_NONE) {
       
       <!-- Iconos -->
       <div class="col-md-4 d-flex justify-content-end align-items-center icon-nav">
-        <a class="nav-item me-4" href="?controller=usuarios&action=userDetails">
-          <img src="view/images/iconos/icono_session_blanco.png" class="icono" alt="lupa">
-        </a>
         <a class="nav-item me-4" href="?controller=producto&action=carrito">
           <img src="view/images/iconos/icono_carrito_blanco.png" class="icono" alt="carrito">
         </a>
-        <a class="nav-item me-4" href="?controller=usuarios&action=login">
+        <a class="nav-item me-4" href="?controller=usuarios&action=userDetails">
           <img src="view/images/iconos/icono_session_blanco.png" class="icono" alt="user">
+        </a>
+        <a class="nav-item me-4" href="?controller=usuarios&action=logout">
+          <img src="view/images/iconos/icono_cerrar_blanco.png" class="icono" alt="logout">
         </a>
       </div>
       

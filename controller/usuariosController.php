@@ -90,7 +90,9 @@ class usuariosController {
     public function logout() {
         session_start();
         session_destroy();
-        header('Location: ?controller=usuarios&action=login');
+        header('Location: ?controller=producto');
+        session_start();
+        $_SESSION['mensaje'] = "Session cerrada con exito.";
     }
 
     public function actualizarUsuario() {
@@ -108,8 +110,8 @@ class usuariosController {
     
             if ($exito === true) {
                 $_SESSION['usuario'] = $usuario;
-                $_SESSION['mensaje'] = "Perfil actualizado correctamente.";
-                header('Location: ?controller=usuarios&action=userDetails');
+                $_SESSION['mensaje'] = "Datos actualizados con exito.";
+                header('Location: ?controller=producto');
                 exit();
             } else {
                 $_SESSION['mensaje'] = "Hubo un problema al actualizar el perfil.";

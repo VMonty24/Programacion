@@ -582,19 +582,22 @@ footer.container-fluid.css-1r8ynqq {
   margin-top: 10px;
 }
 
-.cart-total p {
-  margin: 0;
+
+
+p {
+  margin-bottom: 0 !important ;
 }
 
 .cart-total span {
   font-weight: bold;
+  margin-left: 8px;
   color: #fff;
 }
 
 /* ------ */
 /* PAGAR */
 /* ----- */
-/* Contenedor del formulario de pago */
+
 /* Contenedor del formulario de pago */
 .payment-section {
   background-color: #000;
@@ -1002,69 +1005,82 @@ form .linkTxt{
 /* ------------------ */
 
 
+/* Contenedor del perfil */
 .perfil-container {
   max-width: 600px;
   margin: 50px auto;
-  background-color: #202020;
-  color: #fff;
+  background-color: #000000;
+  color: #ffffff;
   padding: 20px;
-
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Título del perfil */
 .perfil-titulo {
   text-align: center;
   font-size: 28px;
   margin-bottom: 20px;
+  font-weight: bold;
   color: #ffffff;
 }
 
+/* Formulario del perfil */
 .perfil-formulario {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px; 
 }
 
+/* Campos del formulario */
 .perfil-campo {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
+/* Etiquetas de los campos */
 .perfil-campo label {
-  font-size: 16px;
-  font-weight: bold;
-  color: #bababa;
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
+/* Entradas del formulario */
 .perfil-campo input {
   padding: 10px;
   border: 1px solid #444;
-  background-color: #121212;
-  color: #fff;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
 }
 
+/* Estilo de las entradas al hacer foco */
 .perfil-campo input:focus {
-  border-color: #888;
+  border-color: #aeaeae;
   outline: none;
+  background-color: #444;
 }
 
+/* Estilo del botón */
 .perfil-boton {
   padding: 10px 20px;
-  border: none;
-
-  background-color: #ffffff;
-  color: #202020;
+  border: 1px solid #ffffff;
+  background-color: #202020;
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+
 }
 
+/* Estilo del botón al hacer hover */
 .perfil-boton:hover {
-  background-color: #bababa;
+  background-color: #ffffff;
+  color: #202020;
 }
 
+/* Sección de depuración */
 .perfil-debug {
   margin-top: 20px;
   font-size: 12px;
