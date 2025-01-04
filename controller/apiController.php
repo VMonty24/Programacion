@@ -213,8 +213,38 @@ class apiController {
 
     // FUNCINES PEDIDOS
     function getPedidos() {
+
+
+        $accion = $_GET['order'] ?? null;
+
+        switch ($accion) {
+            case 'userAsc':
+                $orderBy = 'id_usuario ASC';
+                break;
+            case 'userDesc':
+                $orderBy = 'id_usuario DESC';
+                break;
+            case 'totalAsc':
+                $orderBy = 'total ASC';
+                break;
+            case 'totalDesc':
+                $orderBy = 'total DESC';
+                break;
+            case 'fechaAsc':
+                $orderBy = 'fecha ASC';
+                break;
+            case 'fechaDesc':
+                $orderBy = 'fecha DESC';
+                break;
+            default:
+                $orderBy = 'id ASC';
+                break;
+        }
+
+    
+
         $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.pedidos");
+        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.pedidos ORDER BY $orderBy");
         $stmt->execute();
         $result = $stmt->get_result();
 

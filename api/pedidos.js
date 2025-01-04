@@ -1,6 +1,6 @@
-async function getPedidos() {
+async function getPedidos(accion) {
     document.getElementById("pedidosTableContainer").style.display = "block";
-    const response = await fetch('?controller=api&action=getPedidos');
+    const response = await fetch(`?controller=api&action=getPedidos&order=${accion}`);
     const pedidos = await response.json();
     mostrarPedidos(pedidos);
 }
@@ -133,9 +133,18 @@ async function createPedido() {
     });
 }
 
+
+
+
 // Event listeners
 document.getElementById("getPedidos").addEventListener("click", getPedidos);
 document.getElementById("newPedido").addEventListener("click", createPedido);
+document.getElementById("userAsc").addEventListener("click", () => getPedidos("userAsc"));
+document.getElementById("userDesc").addEventListener("click", () => getPedidos("userDesc"));
+document.getElementById("totalAsc").addEventListener("click", () => getPedidos("totalAsc"));
+document.getElementById("totalDesc").addEventListener("click", () => getPedidos("totalDesc"));
+document.getElementById("fechaAsc").addEventListener("click", () => getPedidos("fechaAsc"));
+document.getElementById("fechaDesc").addEventListener("click", () => getPedidos("fechaDesc"));
 
 document.querySelector('#pedidosTable tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete')) {
@@ -150,3 +159,5 @@ document.querySelector('#pedidosTable tbody').addEventListener('click', function
         editPedido(id_pedido);
     }
 });
+
+

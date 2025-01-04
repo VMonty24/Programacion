@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="api/admidn.css">
+    <link rel="stylesheet" href="api/adminn.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 </head>
 <body>
@@ -19,11 +19,13 @@
                 <button id="getProductos" class="btn-admin">Obtener Productos</button>
                 <button id="newProducto" class="btn-admin">Crear Producto</button>
             </div>
+            <!-- Botones de usuarios -->
             <div class="button-group">
                 <h3>Usuarios</h3>
                 <button id="getUsuarios" class="btn-admin">Obtener Usuarios</button>
                 <button id="newUsuario" class="btn-admin">Crear Usuario</button>
             </div>
+            <!-- Botones de pedidos -->
             <div class="button-group">
                 <h3>Pedidos</h3>
                 <button id="getPedidos" class="btn-admin">Obtener Pedidos</button>
@@ -53,19 +55,37 @@
 
         <!-- Tabla de pedidos -->
         <div id="pedidosTableContainer" class="table-container" style="display: none;">
+            <div class="button-group">
+                <div class="order-section">
+                    <h3>Usuarios</h3>
+                    <button id="userAsc" class="btn-admin">Ascendente</button>
+                    <button id="userDesc" class="btn-admin">Descendente</button>
+                </div>
+                <div class="order-section">
+                    <h3>Total</h3>
+                    <button id="totalAsc" class="btn-admin">Ascendente</button>
+                    <button id="totalDesc" class="btn-admin">Descendente</button>
+                </div>
+                <div class="order-section">
+                    <h3>Fecha</h3>
+                    <button id="fechaAsc" class="btn-admin">Ascendente</button>
+                    <button id="fechaDesc" class="btn-admin">Descendente</button>
+                </div>
+            </div>
+            
             <table id="pedidosTable" border="1">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>ID_USER</th>
                         <th>TOTAL</th>
-                        <th>METODO DE PAGO</th>
+                        <th>TARJETA</th>
                         <th>FECHA</th>
-                        <th>Acciones</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Aquí se llenarán los usuarios dinámicamente -->
+                    <!-- Aquí se llenarán los pedidos dinámicamente -->
                 </tbody>
             </table>
         </div>
