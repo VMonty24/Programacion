@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="api/admidn.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+</head>
+<body>
+    <div class="button-wrapper">
+        <div class="button-container">
+
+            <!-- Botones de categorías -->
+             <button id="inicio" class="btn-admin">Inicio</button>
+            <!-- Botones de productos -->
+            <div class="button-group">
+                <h3>Productos</h3>
+                <button id="getProductos" class="btn-admin">Obtener Productos</button>
+                <button id="newProducto" class="btn-admin">Crear Producto</button>
+            </div>
+            <div class="button-group">
+                <h3>Usuarios</h3>
+                <button id="getUsuarios" class="btn-admin">Obtener Usuarios</button>
+                <button id="newUsuario" class="btn-admin">Crear Usuario</button>
+            </div>
+            <div class="button-group">
+                <h3>Pedidos</h3>
+                <button id="getPedidos" class="btn-admin">Obtener Pedidos</button>
+                <button id="newPedido" class="btn-admin">Crear Pedido</button>
+            </div>
+        </div>
+
+        <!-- Tabla de productos -->
+        <div id="productosTableContainer" class="table-container" style="display: none;">
+            <table id="productosTable" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se llenarán los productos dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tabla de pedidos -->
+        <div id="pedidosTableContainer" class="table-container" style="display: none;">
+            <table id="pedidosTable" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID_USER</th>
+                        <th>TOTAL</th>
+                        <th>METODO DE PAGO</th>
+                        <th>FECHA</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se llenarán los usuarios dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!-- Tabla de usuarios -->
+        <div id="usuariosTableContainer" class="table-container" style="display: none;">
+            <table id="usuariosTable" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se llenarán los usuarios dinámicamente -->
+                </tbody>
+                </table>
+        </div>
+
+
+        <!-- Formulario de creación/modificación -->
+        <div id="formContainer" class="form-center" style="display: none;">
+            <!-- Aquí se llenarán los datos dinámicamente -->
+        </div>
+    </div>
+
+    <script src="api/productos.js"></script>
+    <script src="api/usuarios.js"></script>
+    <script src="api/pedidos.js"></script>
+</body>
+</html>
+
+

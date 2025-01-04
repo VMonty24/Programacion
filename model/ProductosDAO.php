@@ -54,16 +54,40 @@ class ProductosDAO{
         $con = DataBase::connect();
     
         // Consulta SQL para insertar el pedido
-        $sql = "INSERT INTO pedidos (id_usuario, total, metodo_pago) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO pedidos (id_usuario, total, metodo_pago, fecha) VALUES (?, ?, ?, ?)";
     
         $stmt = $con->prepare($sql);
-        $stmt->bind_param('isd', $idUser, $total, $numeroPago); // 'i' para ID, 'd' para decimal, 's' para string
+        $fecha = date('Y-m-d H:i:s'); // Obtener la fecha actual con hora
+        $stmt->bind_param('isds', $idUser, $total, $numeroPago, $fecha); // 'i' para ID, 'd' para decimal, 's' para string
     
         $resultado = $stmt->execute();
         $stmt->close();
         $con->close();
     
         return $resultado;
+    }
+
+    //sin uso
+    public static function getOfertaById($id) {
+        // Realizamos la conexión a la DB
+        $con = DataBase::connect();
+        
+        // Preparamos la consulta SQL
+        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.ofertas WHERE id = ?");
+        $stmt->bind_param("i", $id);  // Asociar el parámetro al id
+
+        // Ejecutamos la consulta
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Obtener la oferta si existe
+        if ($oferta = $result->fetch_object()) {
+            $con->close();
+            return $oferta;
+        }
+
+        $con->close();
+        return null; // Retorna null si no se encuentra la oferta
     }
     
     

@@ -1,6 +1,10 @@
 <?php
 // Verificar si el carrito está definido y no está vacío
 $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
+
+$resultados = productoController::calcTotal();
+$total = $resultados['total'];
+$descuento = $resultados['descuento'];
 ?>
 
 <div class="cart-container">
@@ -28,35 +32,27 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 
     <!-- Coste Total -->
     <div class="cart-total">
-      <p>COSTE TOTAL DEL PEDIDO
-        <span>
-          <?php
-          // Calcular el coste total
-          $total = productoController::calcTotal();
-          echo number_format($total, 2) . '€';
-          ?>
-        </span>
-      </p>
-      
-      <?php
-if (isset($_SESSION['carrito'])) {
-    $suma = 0;
-    foreach ($_SESSION['carrito'] as $item) {
-        $suma += $item['precio'] * $item['cantidad'];
-    }
+    <p>COSTE TOTAL DEL PEDIDO
+        <span><?php echo number_format($total, 2) . '€'; ?></span>
+    </p>
 
-    if ($total != $suma) { ?>
-        <p>
-            PRECIO SIN DESCUENTO
-            <span>
-                <?php echo number_format($suma, 2) . '€'; ?>
-            </span>
+    <?php if ($descuento > 0): ?>
+        <p>DESCUENTO APLICADO
+            <span><?php echo number_format($descuento, 2) . '€'; ?></span>
         </p>
-    <?php }
-}
-?>
+    <?php endif; ?>
 
-    </div>
+    <?php
+    $suma = array_sum(array_map(function($item) {
+        return $item['precio'] * $item['cantidad'];
+    }, $_SESSION['carrito']));
+
+    if ($total != $suma): ?>
+        <p>PRECIO SIN DESCUENTO
+            <span><?php echo number_format($suma, 2) . '€'; ?></span>
+        </p>
+    <?php endif; ?>
+</div>
   <?php else: ?>
     <p style="text-align: center; color: #fff;">El carrito está vacío.</p>
   <?php endif; ?>

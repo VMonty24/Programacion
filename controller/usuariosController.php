@@ -10,6 +10,10 @@ class usuariosController {
         include_once 'view/main.php';
     }
 
+    public function admin(){
+        include_once 'api/admin_panel.html';
+    }
+
     public function userDetails() {
         session_start();
         if (isset($_SESSION['usuario'])) {
@@ -30,11 +34,15 @@ class usuariosController {
             $usuario = UsuariosDAO::obtenerPorEmail($email);
     
             if ($usuario && password_verify($password, $usuario->getPassword())) {
-                $_SESSION['usuario'] = $usuario;
-                // Verifica que la sesión se haya iniciado correctamente
-                echo '<script>alert("Correo o contraseña incorrectos.");</script>';
-                header('Location: ?controller=producto&action=index');
-                exit();
+                if ($email === 'admin@admin.com') {
+                    $_SESSION['usuario'] = $usuario;
+                    header('Location: ?controller=usuarios&action=admin');
+                    exit();
+                } else {
+                    $_SESSION['usuario'] = $usuario;
+                    header('Location: ?controller=producto&action=index');
+                    exit();
+                }
             } else {
                 echo '<script>alert("Correo o contraseña incorrectos.");</script>';
                 $this->login();
@@ -61,12 +69,6 @@ class usuariosController {
                 echo '<script>alert("El email ya está registrado.");</script>';
                 $this->login();
                 return;
-            }
-    
-            // Redirigir si el email es admin@admin.com
-            if ($email === 'admin@admin.com') {
-                header('Location: ?controller=admin&action=dashboard');
-                exit();
             }
     
             // Continuar con el registro
