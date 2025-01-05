@@ -1,4 +1,5 @@
 function mostrarUsuarios(usuarios) {
+    noneDisplay();
     document.getElementById("usuariosTableContainer").style.display = "block";
     const usuariosTable = document.getElementById("usuariosTable").getElementsByTagName("tbody")[0];
     usuariosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
@@ -24,7 +25,6 @@ function mostrarUsuarios(usuarios) {
 
 async function getUsuarios() {
     const response = await fetch('?controller=api&action=getUsuarios');
-
     const usuarios = await response.json();
     mostrarUsuarios(usuarios);
 }
@@ -45,6 +45,8 @@ async function deleteUsuario(id) {
 }
 
 async function editUsuario(id) {
+    noneDisplay();
+    document.getElementById("formContainer").style.display = "block";
     const response = await fetch(`?controller=api&action=getUsuarioById&id=${id}`);
     const usuario = await response.json();
 
@@ -87,8 +89,6 @@ async function editUsuario(id) {
 
         if (data.status === "success") {
             alert(data.message);
-            document.getElementById("usuariosTableContainer").style.display = "block";
-            document.getElementById("formContainer").style.display = "none";
             getUsuarios();
         } else {
             alert(data.message);
@@ -97,8 +97,8 @@ async function editUsuario(id) {
 }
 
 async function createUsuario() {
+    noneDisplay();
     document.getElementById("formContainer").style.display = "block";
-    document.getElementById("usuariosTableContainer").style.display = "none";
 
     formContainer.innerHTML = `
         <label class="form-label" for="createNombre">Nombre</label>
@@ -161,8 +161,7 @@ document.querySelector('#usuariosTable tbody').addEventListener('click', functio
     } else if (event.target.classList.contains('edit')) {
         const row = event.target.closest('tr');
         const id_usuario = row.querySelector('td').innerText;
-        document.getElementById("usuariosTableContainer").style.display = "none";
-        document.getElementById("formContainer").style.display = "block";
         editUsuario(id_usuario);
     }
 });
+

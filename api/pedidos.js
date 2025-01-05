@@ -1,21 +1,19 @@
-async function getPedidos(accion) {
-    document.getElementById("pedidosTableContainer").style.display = "block";
-    const response = await fetch(`?controller=api&action=getPedidos&order=${accion}`);
-    const pedidos = await response.json();
-    mostrarPedidos(pedidos);
-}
-
-function mostrarPedidos(pedidos) {
+async function mostrarPedidos(pedidos) {
+    noneDisplay();
     document.getElementById("pedidosTableContainer").style.display = "block";
     const pedidosTable = document.getElementById("pedidosTable").getElementsByTagName("tbody")[0];
     pedidosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
 
+    const monedaSeleccionada = document.getElementById("currencySelect").value;
+    const tipoCambio = await obtenerTipoCambio(monedaSeleccionada);
+
     pedidos.forEach(pedido => {
+        const precioConvertido = convertirPrecio(pedido.total, tipoCambio); // Convertir el precio
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${pedido.id}</td>
             <td>${pedido.id_usuario}</td>
-            <td>${pedido.total}</td>
+            <td>${precioConvertido} ${monedaSeleccionada}</td>
             <td>${pedido.metodo_pago}</td>
             <td>${pedido.fecha}</td>
             <td>
@@ -26,6 +24,14 @@ function mostrarPedidos(pedidos) {
         pedidosTable.appendChild(fila);
     });
 }
+
+
+async function getPedidos(accion) {
+    const response = await fetch(`?controller=api&action=getPedidos&order=${accion}`);
+    const pedidos = await response.json();
+    mostrarPedidos(pedidos);
+}
+
 
 async function deletePedido(id) {
     const confirmacion = confirm("¿Estás seguro de que deseas eliminar este pedido?");
@@ -43,6 +49,9 @@ async function deletePedido(id) {
 }
 
 async function editPedido(id) {
+    noneDisplay();
+    document.getElementById("formContainer").style.display = "block";
+
     const response = await fetch(`?controller=api&action=getPedidoById&id=${id}`);
     const pedido = await response.json();
 
@@ -79,8 +88,6 @@ async function editPedido(id) {
 
         if (data.status === "success") {
             alert(data.message);
-            document.getElementById("pedidosTableContainer").style.display = "block";
-            document.getElementById("formContainer").style.display = "none";
             getPedidos();
         } else {
             alert(data.message);
@@ -89,12 +96,12 @@ async function editPedido(id) {
 }
 
 async function createPedido() {
+    noneDisplay();
     document.getElementById("formContainer").style.display = "block";
-    document.getElementById("pedidosTableContainer").style.display = "none";
 
     formContainer.innerHTML = `
         <label class="form-label" for="createIdUsuario">ID Usuario</label>
-        <input type="text" id="createIdUsuario" class="form-input" placeholder="ID Usuario">
+        <input type="text" id="createIdUsuario" class="form-input" placeholder="ID Usuario" value="null">
         <label class="form-label" for="createTotal">Total</label>
         <input type="text" id="createTotal" class="form-input" placeholder="Total">
         <label class="form-label" for="createMetodoPago">Método de Pago</label>
@@ -124,8 +131,6 @@ async function createPedido() {
 
         if (data.status === "success") {
             alert(data.message);
-            document.getElementById("pedidosTableContainer").style.display = "block";
-            document.getElementById("formContainer").style.display = "none";
             getPedidos();
         } else {
             alert(data.message);
@@ -139,6 +144,7 @@ async function createPedido() {
 // Event listeners
 document.getElementById("getPedidos").addEventListener("click", getPedidos);
 document.getElementById("newPedido").addEventListener("click", createPedido);
+document.getElementById("currencySelect").addEventListener("change", getPedidos);
 document.getElementById("userAsc").addEventListener("click", () => getPedidos("userAsc"));
 document.getElementById("userDesc").addEventListener("click", () => getPedidos("userDesc"));
 document.getElementById("totalAsc").addEventListener("click", () => getPedidos("totalAsc"));
@@ -154,8 +160,6 @@ document.querySelector('#pedidosTable tbody').addEventListener('click', function
     } else if (event.target.classList.contains('edit')) {
         const row = event.target.closest('tr');
         const id_pedido = row.querySelector('td').innerText;
-        document.getElementById("pedidosTableContainer").style.display = "none";
-        document.getElementById("formContainer").style.display = "block";
         editPedido(id_pedido);
     }
 });

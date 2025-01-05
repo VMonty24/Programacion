@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador</title>
-    <link rel="stylesheet" href="api/adminn.css">
+    <link rel="stylesheet" href="api/admin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 </head>
 <body>
     <div class="button-wrapper">
         <div class="button-container">
 
-            <!-- Botones de categorías -->
-             <button id="inicio" class="btn-admin">Inicio</button>
+            <!-- Botones de control -->
+            <div class="button-group">
+                <h3>Control</h3>
+                <button id="inicio" class="btn-admin">Inicio</button>
+                <button id="salir" class="btn-admin">Salir</button>
+            </div>
             <!-- Botones de productos -->
             <div class="button-group">
                 <h3>Productos</h3>
@@ -31,6 +35,17 @@
                 <button id="getPedidos" class="btn-admin">Obtener Pedidos</button>
                 <button id="newPedido" class="btn-admin">Crear Pedido</button>
             </div>
+             <!-- Botón de logs -->
+            <div class="button-group">
+                <h3>Logs</h3>
+                <button id="getLogs" class="btn-admin">Obtener Logs</button>
+                <button id="clearLogs" class="btn-admin">Eliminar Logs</button>
+            </div>
+        </div>
+
+        <!-- Contenedor de logs -->
+        <div id="logsContainer" class="logs-container" style="display: none;">
+            <!-- Aquí se llenarán los logs dinámicamente -->
         </div>
 
         <!-- Tabla de productos -->
@@ -71,6 +86,21 @@
                     <button id="fechaAsc" class="btn-admin">Ascendente</button>
                     <button id="fechaDesc" class="btn-admin">Descendente</button>
                 </div>
+                <label for="currencySelect">Selecciona la moneda:</label>
+                <select id="currencySelect">
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="USD">USD - Dólar estadounidense</option>
+                    <option value="GBP">GBP - Libra esterlina</option>
+                    <option value="JPY">JPY - Yen japonés</option>
+                    <option value="CNY">CNY - Yuan chino</option>
+                    <option value="AUD">AUD - Dólar australiano</option>
+                    <option value="CAD">CAD - Dólar canadiense</option>
+                    <option value="CHF">CHF - Franco suizo</option>
+                    <option value="MXN">MXN - Peso mexicano</option>
+                    <option value="BRL">BRL - Real brasileño</option>
+                </select>
+                
+
             </div>
             
             <table id="pedidosTable" border="1">
@@ -89,8 +119,6 @@
                 </tbody>
             </table>
         </div>
-
-
 
         <!-- Tabla de usuarios -->
         <div id="usuariosTableContainer" class="table-container" style="display: none;">
@@ -123,6 +151,7 @@
     <script src="api/productos.js"></script>
     <script src="api/usuarios.js"></script>
     <script src="api/pedidos.js"></script>
+    <script src="api/common.js"></script>
 </body>
 </html>
 

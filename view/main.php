@@ -49,7 +49,7 @@ if (session_status() == PHP_SESSION_NONE) {
           <a class="nav-link" href="?controller=producto&action=carta">CARTA</a>
         </li>
         <li class="nav-item me-4">
-          <a class="nav-link" href="#">LOCALES</a>
+          <a class="nav-link" href="https://www.google.com/maps/search/SushiOne/@41.5851511,-3.3973894,6z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">LOCALES</a>
         </li>
       </ul>
 
@@ -89,37 +89,37 @@ if (session_status() == PHP_SESSION_NONE) {
           <div class="order-0 mb-3 mb-md-5 col">
             <ul class="footer-menu text-uppercase ">
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/la-empresa">EMPRESA</a>
+                <a href="https://www.lamborghini.com/es-en">EMPRESA</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/financials">Financials</a>
+                <a href="https://www.lamborghini.com/es-en">Financials</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/empleo">EMPLEO</a>
+                <a href="https://www.lamborghini.com/es-en">EMPLEO</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/contacto">CONTACTO</a>
+                <a href="https://www.lamborghini.com/es-en">CONTACTO</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/sostenibilidad">Sostenibilidad</a>
+                <a href="https://www.lamborghini.com/es-en">Sostenibilidad</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
                 <a href="https://media.lamborghini.com/english">Media Center</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/privacy-legal">AVISO LEGAL Y PRIVACIDAD</a>
+                <a href="https://www.lamborghini.com/es-en">AVISO LEGAL Y PRIVACIDAD</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="#onetrust-settings">Configuración de cookies</a>
+                <a href="https://www.lamborghini.com/es-en">Configuración de cookies</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/mapa-del-sitio">MAPA DEL SITIO</a>
+                <a href="https://www.lamborghini.com/es-en">MAPA DEL SITIO</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
                 <a href="https://newsletter.lamborghini.com/en">Newsletter</a>
               </li>
               <li class="col-6 col-md-auto mr-md-4 mr-lg-5">
-                <a href="/es-en/accesibilidad">Accesibilidad</a>
+                <a href="https://www.lamborghini.com/es-en">Accesibilidad</a>
               </li>
             </ul>
           </div>
@@ -186,17 +186,16 @@ if (session_status() == PHP_SESSION_NONE) {
           </div>
           <div class="order-2 col-12">
             <ul class="disclaimer align-self-md-end">
-              <li><p>Los valores de consumos y emisiones presentes en el sitio web se refieren a su IP geográfica. Dicho valor podría diferir de la realidad si navega a través de una VPN o si la ubicación de su proveedor de Internet no es exacta. Si cree que no está geolocalizado correctamente, contacte con su concesionario de referencia para obtener información válida en su territorio sobre consumos y emisiones.</p>
+              <li><p>En Sushsione, nos aseguramos de que todos nuestros usuarios disfruten de ofertas exclusivas. Para aprovecharlas, por favor inicia sesión en tu cuenta o, si no tienes una, crea una.</p>
               </li>
             </ul>
           </div>
           <div class="order-3 col-12">
             <div class="body">
-              <p>Copyright © 2024 Automobili Lamborghini S.p.A. una sociedad de accionista único sujeta a la dirección y coordinación de AUDI AG.</p>
-              <p>Todos los derechos reservados. Núm. IVA IT 00591801204</p>
-              <p></p>
-              <p>AVISO SOBRE OFERTAS ILEGALES DE SUPUESTAS ACCIONES DE AUTOMOBILI LAMBORGHINI S.P.A.</p>
-              <p>Automobili Lamborghini S.p.A. ha tenido noticia de que varios terceros de diferentes países están presuntamente ofreciendo acciones de Automobili Lamborghini S.p.A. Estas ofertas son ilegales y no provienen ni de Volkswagen Aktiengesellschaft ni de ninguna de sus filiales.</p>
+              <p>Copyright © 2025 Sushsione. Todos los derechos reservados.</p>
+              <p>Todos los derechos reservados.</p>
+              <p>Sushsione es una plataforma que ofrece productos exclusivos de sushi y gastronomía japonesa para todos nuestros clientes.</p>
+              <p>Si tienes alguna duda o inquietud sobre nuestras ofertas o el uso de la plataforma, no dudes en ponerte en contacto con nosotros.</p>
             </div>
           </div>
         </div>

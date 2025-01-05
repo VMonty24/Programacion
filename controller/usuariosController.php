@@ -18,12 +18,17 @@ class usuariosController {
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
-            $views = 'view/html/user.php';
-            include_once 'view/main.php';
+            if ($usuario->getNombre() === 'admin') {
+                header('Location: ?controller=usuarios&action=admin');
+            } else {
+                $views = 'view/html/user.php';
+                include_once 'view/main.php';
+            }
         } else {
             header('Location: ?controller=usuarios&action=login');
         }
-    }   
+    }
+    
 
     public function doLogin() {
         session_start();
@@ -122,4 +127,15 @@ class usuariosController {
         }
     }
 
+    public function redirectOfertas() {
+        session_start();
+        if (isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])) {
+            header('Location: ?controller=producto&action=carta');
+        } else {
+            header('Location: ?controller=usuarios&action=login');
+        }
+    }
+
 }
+
+

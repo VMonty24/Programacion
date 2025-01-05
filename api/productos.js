@@ -1,4 +1,5 @@
 function mostrarProductos(productos) {
+    noneDisplay();
     document.getElementById("productosTableContainer").style.display = "block";
     const productosTable = document.getElementById("productosTable").getElementsByTagName("tbody")[0];
     productosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
@@ -25,7 +26,6 @@ function mostrarProductos(productos) {
 
 async function getProductos() {
     const response = await fetch('?controller=api&action=getProductos');
-
     const productos = await response.json();
     mostrarProductos(productos);
 }
@@ -49,6 +49,9 @@ async function deleteProducto(id) {
 }
 
 async function editProducto(id) {
+    noneDisplay();
+    document.getElementById("formContainer").style.display = "block";
+    
     // Obtener los datos del producto desde el servidor
     const response = await fetch(`?controller=api&action=getProductoById&id=${id}`);
     const producto = await response.json();
@@ -89,8 +92,6 @@ async function editProducto(id) {
 
         if (data.status === "success") {
             alert(data.message);
-            document.getElementById("productosTableContainer").style.display = "block";
-            document.getElementById("formContainer").style.display = "none";
             getProductos();
         } else {
             alert(data.message);
@@ -99,8 +100,8 @@ async function editProducto(id) {
 }
 
 async function createProducto() {
+    noneDisplay();
     document.getElementById("formContainer").style.display = "block";
-    document.getElementById("productosTableContainer").style.display = "none";
 
     formContainer.innerHTML = `
         <label class="form-label" for="createNombre">Nombre</label>
@@ -137,8 +138,6 @@ async function createProducto() {
 
         if (data.status === "success") {
             alert(data.message);
-            document.getElementById("productosTableContainer").style.display = "block";
-            document.getElementById("formContainer").style.display = "none";
             getProductos();
         } else {
             alert(data.message);
@@ -150,10 +149,13 @@ async function createProducto() {
 
 
 
-
 // Event listeners
 document.getElementById("getProductos").addEventListener("click", getProductos);
 document.getElementById("newProducto").addEventListener("click", createProducto); 
+
+
+
+
 
 document.querySelector('#productosTable tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete')) {
@@ -163,8 +165,6 @@ document.querySelector('#productosTable tbody').addEventListener('click', functi
     } else if (event.target.classList.contains('edit')) {
         const row = event.target.closest('tr');
         const id_producto = row.querySelector('td').innerText;
-        document.getElementById("productosTableContainer").style.display = "none";
-        document.getElementById("formContainer").style.display = "block";
         editProducto(id_producto);
     }
 });

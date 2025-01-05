@@ -1,0 +1,5 @@
+[2025-01-05 20:19:02] Action: createUsuario, Data: ["id: lol@lol"]
+[2025-01-05 20:19:13] Action: deleteUsuario, Data: {"id":"25","nombre":"lolca","apellidos":"Montalvo Moro","password":"$2y$10$g8DADz5vhvHG2nhhtf7NeeHDPxla2AJEZ7FXb.SlcjBI4pH2.cLCa","email":"lol@lol","telefono":"622427106","direccion":"Passatge Josep Ros"}
+[2025-01-05 20:19:18] Action: deleteUsuario, Data: {"id":"24","nombre":"V\u00edctor","apellidos":"Montalvo Moro","password":"$2y$10$nRrWWajVXiVrIc1PPxrENO\/IhkSkkmu4p7uCSLicM9BcYQsVfKJcG","email":"lala@lala.com","telefono":"622427106","direccion":"Passatge Josep Ros"}
+[2025-01-05 20:19:21] Action: deleteUsuario, Data: {"id":"19","nombre":"V\u00edctor","apellidos":"Montalvo Moro","password":"$2y$10$OxUiqRZ5myB.p3OQOZL02.oq1puQA1ZuU.pIvN0ZhdDqPTk.tckjW","email":"lala@lala.com","telefono":"622427106","direccion":"Passatge Josep Ros"}
+[2025-01-05 20:19:24] Action: deleteUsuario, Data: {"id":"21","nombre":"V\u00edctor","apellidos":"Montalvo Moro","password":"$2y$10$hWypKdccgw3axHbKAHiOue25dktixrQbJiRfPbhbxYdY\/ZufooKVq","email":"lala@lala.com","telefono":"622427106","direccion":"Passatge Josep Ros"}

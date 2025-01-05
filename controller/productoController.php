@@ -23,6 +23,11 @@ class productoController{
         include_once 'view/main.php';
     }   
 
+    public function locales(){
+        $views = 'view/html/locales.php';
+        include_once 'view/main.php';
+    }
+
 
     public function addToCart() {
         session_start();
@@ -64,7 +69,7 @@ class productoController{
                 }
     
                 // Redirigir a la carta
-                header("Location: ?controller=Producto&action=carta");
+                header("Location: " . $_SERVER['HTTP_REFERER']);
                 exit; // Añadir exit después de redirigir para evitar más ejecuciones
             }
         }

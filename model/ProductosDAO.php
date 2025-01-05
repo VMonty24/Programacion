@@ -58,7 +58,7 @@ class ProductosDAO{
     
         $stmt = $con->prepare($sql);
         $fecha = date('Y-m-d H:i:s'); // Obtener la fecha actual con hora
-        $stmt->bind_param('isds', $idUser, $total, $numeroPago, $fecha); // 'i' para ID, 'd' para decimal, 's' para string
+        $stmt->bind_param('idss', $idUser, $total, $numeroPago, $fecha); // 'i' para ID, 'd' para decimal, 's' para string
     
         $resultado = $stmt->execute();
         $stmt->close();

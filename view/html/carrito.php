@@ -102,3 +102,6 @@ $descuento = $resultados['descuento'];
     <button class="btn-pay" type="submit">Enviar</button>
   </form>
 </div>
+<?php
+var_dump($_SESSION['usuario']);
+?>
