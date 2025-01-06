@@ -130,7 +130,7 @@ body {
 /* ----- BANNER ----- */
 /* ------------------ */
 .banner {
-  background-image: url(../images/banner.jpg);
+  background-image: url(../images/banner.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -224,7 +224,7 @@ img {
 
 .icono-flecha-l:hover,
 .icono-flecha-r:hover {
-  content: url(../images/iconos/flecha\ negro\ .png); /* Imagen al hacer hover */
+  content: url(../images/iconos/flecha\ negro\ .webp); /* Imagen al hacer hover */
   background-color: #ffffff !important;
 }
 
@@ -238,13 +238,13 @@ img {
 /* -- PUESTO VENTA -- */
 /* ------------------ */
 .puesto-venta {
-  background-image: url('../images/fondo_locales.png');
+  background-image: url('../images/fondo_locales.webp');
   background-size: cover;
   background-position: center;
   position: relative;
   height: 500px;
   display: flex;
-  flex-direction: column; /* Alinea los elementos verticalmente */
+  flex-direction: column; 
 }
 
 /* Estilo del texto */

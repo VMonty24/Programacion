@@ -19,7 +19,7 @@ if (isset($_SESSION['mensaje'])) {
     <div class="carousel-item active">
       <div class="card">
         <div class="img-wrapper">
-          <img src="view/images/publicidad/carrousel_1.png" alt="Imagen carrousel 1">
+          <img src="view/images/publicidad/carrousel_1.webp" alt="Imagen carrousel 1">
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@ if (isset($_SESSION['mensaje'])) {
     <div class="carousel-item">
       <div class="card">
         <div class="img-wrapper">
-          <img src="view/images/publicidad/carrousel_2.png" alt="Imagen carrousel 2">
+          <img src="view/images/publicidad/carrousel_2.webp" alt="Imagen carrousel 2">
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@ if (isset($_SESSION['mensaje'])) {
     <div class="carousel-item">
       <div class="card">
         <div class="img-wrapper">
-          <img src="view/images/publicidad/carrousel_3.png" alt="Imagen carrousel 3">
+          <img src="view/images/publicidad/carrousel_3.webp" alt="Imagen carrousel 3">
         </div>
       </div>
     </div>
