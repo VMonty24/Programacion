@@ -129,7 +129,21 @@ public static function actualizarUsuario($usuario) {
         
         return $total;
     }
+    
+    public static function getUltimoPedido($idUser) {
+        $con = DataBase::connect();
+        $stmt = $con->prepare("SELECT * FROM pedidos WHERE id_usuario = ? ORDER BY fecha DESC LIMIT 1");
+        $stmt->bind_param("i", $idUser);  // Asociar el parámetro al id del usuario
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        if ($pedido = $result->fetch_object()) {
+            $con->close();
+            return $pedido;
+        }
+        $con->close();
+        return null; 
+    }
 
 
 }

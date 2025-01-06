@@ -1,8 +1,8 @@
 <?php
 if (isset($_SESSION['mensaje'])) {
   echo '<script>
-      alert("' . htmlspecialchars($_SESSION['mensaje']) . '");
-      </script>';
+    alert("' . htmlspecialchars($_SESSION['mensaje']) . '");
+    </script>';
   unset($_SESSION['mensaje']);
 }
 ?>
@@ -89,7 +89,6 @@ if (isset($_SESSION['mensaje'])) {
       </svg>
     </div>
   </a>
-
 </div>
 
 <!-- OFERTAS -->

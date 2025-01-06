@@ -87,10 +87,6 @@ class ProductosDAO{
         }
 
         $con->close();
-        return null; // Retorna null si no se encuentra la oferta
-    }
-    
-    
-    
-
+        return null; 
+    }    
 }

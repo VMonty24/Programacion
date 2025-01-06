@@ -21,6 +21,7 @@ class usuariosController {
             if ($usuario->getNombre() === 'admin') {
                 header('Location: ?controller=usuarios&action=admin');
             } else {
+                $pedido = UsuariosDAO::getUltimoPedido($usuario->getId());
                 $views = 'view/html/user.php';
                 include_once 'view/main.php';
             }

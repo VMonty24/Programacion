@@ -7,6 +7,10 @@ $total = $resultados['total'];
 $descuento = $resultados['descuento'];
 ?>
 
+<div class="figura">
+  <p class="texto">HOME / CARRITO</p>
+</div>
+
 <div class="cart-container">
   <?php if (!empty($carrito)): ?>
     <?php foreach ($carrito as $item): ?>
@@ -32,27 +36,27 @@ $descuento = $resultados['descuento'];
 
     <!-- Coste Total -->
     <div class="cart-total">
-    <p>COSTE TOTAL DEL PEDIDO
+      <p>COSTE TOTAL DEL PEDIDO
         <span><?php echo number_format($total, 2) . '€'; ?></span>
-    </p>
+      </p>
 
-    <?php if ($descuento > 0): ?>
+      <?php if ($descuento > 0): ?>
         <p>DESCUENTO APLICADO
-            <span><?php echo number_format($descuento, 2) . '€'; ?></span>
+          <span><?php echo number_format($descuento, 2) . '€'; ?></span>
         </p>
-    <?php endif; ?>
+      <?php endif; ?>
 
-    <?php
-    $suma = array_sum(array_map(function($item) {
+      <?php
+      $suma = array_sum(array_map(function($item) {
         return $item['precio'] * $item['cantidad'];
-    }, $_SESSION['carrito']));
+      }, $_SESSION['carrito']));
 
-    if ($total != $suma): ?>
+      if ($total != $suma): ?>
         <p>PRECIO SIN DESCUENTO
-            <span><?php echo number_format($suma, 2) . '€'; ?></span>
+          <span><?php echo number_format($suma, 2) . '€'; ?></span>
         </p>
-    <?php endif; ?>
-</div>
+      <?php endif; ?>
+    </div>
   <?php else: ?>
     <p style="text-align: center; color: #fff;">El carrito está vacío.</p>
   <?php endif; ?>

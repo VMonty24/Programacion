@@ -1,3 +1,7 @@
+<div class="figura">
+  <p class="texto">HOME / CARTA</p>
+</div>
+
 <h1 class="title_page">CARTA</h1>
 
 <div class="container fondo">

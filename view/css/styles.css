@@ -1,147 +1,159 @@
-*{
-    margin: 0; 
-    padding: 0; 
-    font-family: 'Roboto', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 
-/*NAVEGADOR*/
+.figura {
+  background-color: black; /* Fondo negro */
+  width: 150px; /* Ancho */
+  height: 30px; /* Altura */
+  clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%); /* Figura recortada */
+  position: relative; /* Necesario para posicionar el texto encima */
+  margin-top: 10px;
+}
+
+.texto {
+  color: white; /* Color del texto */
+  font-size: 10px; /* Tamaño del texto */
+  position: absolute; /* Posición absoluta para centrarlo */
+  top: 50%; /* Centrar verticalmente */
+  left: 40%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Ajuste preciso del centro */
+}
+
+/* ------------------ */
+/* --- NAVEGADOR --- */
+/* ------------------ */
 /* Tamaño del logo */
 .logo {
-    height: 80px; 
-    width: 80px;
+  height: 80px;
+  width: 80px;
+}
+
+/* Reducción de la altura en pantallas más pequeñas */
+@media (max-width: 992px) {
+  .nav {
+    height: 60px;
+    min-height: 60px;
   }
-  
-  /* Reducción de la altura en pantallas más pequeñas */
-  @media (max-width: 992px) {
-    .nav {
-      height: 60px;
-      min-height: 60px;
-    }
-    .logo{
-        height: 60px;
-        width: 60px;
-    }
+  .logo {
+    height: 60px;
+    width: 60px;
   }
-  
-  @media (max-width: 768px) {
-    .nav {
-      height: 50px;
-      min-height: 50px;
-    }
-    .logo{
-        height: 50px;
-        width: 50px;
-    }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    height: 50px;
+    min-height: 50px;
   }
-  
-  @media (max-width: 576px) {
-    .nav {
-      height: 40px;
-      min-height: 40px;
-    }
-    .logo{
-        height: 40px;
-        width: 40px;
-    }
-    .navbar .container-fluid {
-        padding: 0;
-        margin: 0;
-      }
+  .logo {
+    height: 50px;
+    width: 50px;
   }
-  
-  /* Eliminación de márgenes y padding alrededor del logo */
+}
+
+@media (max-width: 576px) {
+  .nav {
+    height: 40px;
+    min-height: 40px;
+  }
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
   .navbar .container-fluid {
     padding: 0;
     margin: 0;
   }
-  
+}
+
+/* Eliminación de márgenes y padding alrededor del logo */
+.navbar .container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
 .nav-links {
-    text-align: start;
+  text-align: start;
 }
 
 .nav {
-    background-color: #181818; /* El color de fondo del nav */
-}
-  
-.nav .nav-link {
-    color: #ffffff; /* Cambia el color de los enlaces */
-    font-size: 12px;  
-}
-  
-.nav .nav-link:hover {
-    color: #bababa; /* Cambia el color de los enlaces cuando se pasa el mouse */
+  background-color: #181818; /* El color de fondo del nav */
 }
 
-.icon-nav{
+.nav .nav-link {
+  color: #ffffff; /* Cambia el color de los enlaces */
+  font-size: 12px;
+}
+
+.nav .nav-link:hover {
+  color: #bababa; /* Cambia el color de los enlaces cuando se pasa el mouse */
+}
+
+.icon-nav {
   padding-right: 100px;
 }
+
 .icono {
-    width: 30px;
-    height: 30px; 
-  }
-  
+  width: 30px;
+  height: 30px;
+}
 
 /* BOTON 1 */
-
-.btn-1{
-    color: #ffffff !important;
-    background-color: #202020;
-    padding: 8px;
-    font-size: 12px;
-    text-decoration: none;
-    border-width: 1px; 
-    border-style: solid; 
-    border-color: #ffffff;
-
+.btn-1 {
+  color: #ffffff !important;
+  background-color: #202020;
+  padding: 8px;
+  font-size: 12px;
+  text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff;
 }
 
-.btn-1:hover{
-    color: #121212 !important;
-    background-color: #ffffff;
-    padding: 8px;
-    font-size: 12px;
-    text-decoration: none;
-    border-color: #ffffff;
+.btn-1:hover {
+  color: #121212 !important;
+  background-color: #ffffff;
+  padding: 8px;
+  font-size: 12px;
+  text-decoration: none;
+  border-color: #ffffff;
 }
 
-
-
-
-/*BANNER*/
-
-.banner{
-    background-image: url(../images/banner.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 595px;
-    display: flex;                /* Activar Flexbox */
-    justify-content: center;      /* Centra el contenido horizontalmente */
-    align-items: center;  
+/* ------------------ */
+/* ----- BANNER ----- */
+/* ------------------ */
+.banner {
+  background-image: url(../images/banner.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 595px;
+  display: flex; /* Activar Flexbox */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center;
 }
 
 .title {
-    text-align: center;
-    font-size: 140px;
-    color: #ffffff;
+  text-align: center;
+  font-size: 140px;
+  color: #ffffff;
 }
 
-
-
-
-
-/*PRODUCTOS CARROUSEL*/
-
-#carouselExampleControls{
-    background-color: #202020;
-    padding-inline: 200px;
-    padding-top: 70px;
-    padding-bottom: 70px;
-
+/* ------------------ */
+/* --- CARROUSEL --- */
+/* ------------------ */
+#carouselExampleControls {
+  background-color: #202020;
+  padding-inline: 200px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 .img-wrapper {
@@ -152,42 +164,42 @@ body{
   align-items: flex-start;
   background-color: #202020;
   border: none;
-  margin: 0; 
-  padding: 0; 
-  box-shadow: none; 
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 .img-wrapper img {
   max-width: 100%;
-  height: auto; 
-  border: none; 
+  height: auto;
+  border: none;
 }
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  @media screen and (min-width: 576px) {
-    .carousel-inner {
-      display: flex;
-    }
-    .carousel-item {
-      display: flex;
-      width: 100%;
-    }
-    .img-wrapper {
-      height: 21vw;
-    }
-  }  
 
- 
-.card{
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .carousel-inner {
+    display: flex;
+  }
+  .carousel-item {
+    display: flex;
+    width: 100%;
+  }
+  .img-wrapper {
+    height: 21vw;
+  }
+}
+
+.card {
   border: transparent !important;
 }
 
-
 /* Botón hexagonal general */
 .hexagono-borde-r,
-  .hexagono-borde-l {
+.hexagono-borde-l {
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   background-color: #ffffff; /* Color del borde */
   width: 62px; /* Ajusta el tamaño para que el borde quede alrededor */
@@ -198,12 +210,12 @@ body{
 }
 
 .icono-flecha-l,
-  .icono-flecha-r{
-    background-color: #202020 !important; /* Cambia el color de fondo */
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); /* Forma de hexágono */
-    height: 60px;
-    width: 60px;
-    padding: 15px;
+.icono-flecha-r {
+  background-color: #202020 !important; /* Cambia el color de fondo */
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); /* Forma de hexágono */
+  height: 60px;
+  width: 60px;
+  padding: 15px;
 }
 
 .hexagono-borde-r {
@@ -211,24 +223,22 @@ body{
 }
 
 .icono-flecha-l:hover,
-  .icono-flecha-r:hover {
+.icono-flecha-r:hover {
   content: url(../images/iconos/flecha\ negro\ .png); /* Imagen al hacer hover */
   background-color: #ffffff !important;
 }
 
 .carousel-control-next,
-  .carousel-control-prev {
-    opacity: 1 !important; /* Elimina la opacidad */
-    transition: none !important; /* Elimina la transición */
+.carousel-control-prev {
+  opacity: 1 !important; /* Elimina la opacidad */
+  transition: none !important; /* Elimina la transición */
 }
 
-
-
-
-/* PUESTO VENTA */
-
+/* ------------------ */
+/* -- PUESTO VENTA -- */
+/* ------------------ */
 .puesto-venta {
-  background-image: url('../images/fondo_locales.png'); 
+  background-image: url('../images/fondo_locales.png');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -242,7 +252,7 @@ body{
   font-size: 60px;
   font-weight: bold;
   color: #ffffff;
-  margin: 40px 100px; 
+  margin: 40px 100px;
 }
 
 /* Estilo del botón */
@@ -280,25 +290,24 @@ body{
   stroke: #202020; /* Color de la flecha */
 }
 
-
-
-/* OFERTAS */
-
-.offerts{
+/* ------------------ */
+/* ---- OFERTAS ---- */
+/* ------------------ */
+.offerts {
   margin: 60px;
 }
 
-.offer h3{
+.offer h3 {
   font-size: 30px;
   font-weight: bold;
 }
 
-.offer-top{
+.offer-top {
   margin: 50px;
 }
 
-.offer-background{
-  color: #FFFFFF;
+.offer-background {
+  color: #ffffff;
   background-color: #202020;
   display: flex;
   position: relative;
@@ -308,44 +317,41 @@ body{
   max-width: 500px !important;
   align-items: center;
   justify-content: center;
-
 }
 
-.offer-discount{
+.offer-discount {
   font-size: 50px;
-
 }
 
-.offer-title{
+.offer-title {
   font-size: 20px;
   font-weight: bold;
 }
 
-.restaurant-name{
+.restaurant-name {
   font-size: 60px;
   font-weight: bold;
   padding: 0px;
   margin: 0px;
 }
 
-.offer-description h3{
+.offer-description h3 {
   padding: 40px;
 }
 
-.btn-2{
+.btn-2 {
   color: #202020;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin-left: 40px;
-  padding: 10px 30PX;
+  padding: 10px 30px;
   font-size: 20px;
   text-decoration: none;
-  border-width: 1px; 
-  border-style: solid; 
+  border-width: 1px;
+  border-style: solid;
   border-color: #202020;
-
 }
 
-.btn-2:hover{
+.btn-2:hover {
   color: #ffffff;
   background-color: #202020;
   padding: 10px 30px;
@@ -353,8 +359,9 @@ body{
   text-decoration: none;
 }
 
-
-/* FOOTER */
+/* ----------------- */
+/* ---- FOOTER ---- */
+/* ----------------- */
 /* Footer Container */
 footer.container-fluid.css-1r8ynqq {
   background-color: #121212; /* Fondo oscuro */
@@ -363,7 +370,7 @@ footer.container-fluid.css-1r8ynqq {
 
 /* Footer Menu */
 .footer-menu {
-  list-style-type: none;  
+  list-style-type: none;
   margin: 0;
   padding: 0;
   padding-top: 30px;
@@ -424,22 +431,19 @@ footer.container-fluid.css-1r8ynqq {
   margin: 5px 0;
 }
 
-.icon-social{
-  fill: #FFFFFF;
+.icon-social {
+  fill: #ffffff;
   width: 17px;
   height: 17px;
 }
-
-
-
 
 /* ------------------ */
 /* ----- CARTA ----- */
 /* ------------------ */
 
-.title_page{
+.title_page {
   text-align: center;
-  font-size:60px;
+  font-size: 60px;
   font-weight: bold;
   margin: 60px;
 }
@@ -454,9 +458,7 @@ footer.container-fluid.css-1r8ynqq {
   color: white; /* Texto de las tarjetas blanco */
 }
 
-
-
-.card-text{
+.card-text {
   font-size: small;
   padding-top: 5px;
 }
@@ -471,7 +473,8 @@ footer.container-fluid.css-1r8ynqq {
   align-items: center;
   margin-left: 100px;
 }
-.add-boton-stroke{
+
+.add-boton-stroke {
   stroke: #ffffff;
 }
 
@@ -480,7 +483,7 @@ footer.container-fluid.css-1r8ynqq {
   stroke: #ffffff;
 }
 
-.add-boton-stroke:hover{
+.add-boton-stroke:hover {
   fill: #ffffff;
 }
 
@@ -489,21 +492,19 @@ footer.container-fluid.css-1r8ynqq {
   stroke: #000000;
 }
 
-
-
 /* ------------------ */
 /* ---- CARRITO ---- */
 /* ------------------ */
 
 /* Contenedor general */
 .cart-container {
-  background-color: #000; 
-  color: #fff; 
-  padding: 20px; 
-  margin: 20px auto; 
-  width: 90%; 
-  max-width: 800px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Elementos del producto */
@@ -582,10 +583,8 @@ footer.container-fluid.css-1r8ynqq {
   margin-top: 10px;
 }
 
-
-
 p {
-  margin-bottom: 0 !important ;
+  margin-bottom: 0 !important;
 }
 
 .cart-total span {
@@ -594,9 +593,9 @@ p {
   color: #fff;
 }
 
-/* ------ */
-/* PAGAR */
-/* ----- */
+/* -------------- */
+/* --- PAGAR --- */
+/* -------------*/
 
 /* Contenedor del formulario de pago */
 .payment-section {
@@ -651,23 +650,21 @@ h2 {
   background-color: #444;
 }
 
-
-.btn-pay{
+.btn-pay {
   color: #ffffff;
   background-color: #202020;
   padding: 8px;
   font-size: 12px;
   text-decoration: none;
-  border-width: 1px; 
-  border-style: solid; 
+  border-width: 1px;
+  border-style: solid;
   border-color: #ffffff;
   width: 25%;
   display: block;
   margin: 0 auto;
-
 }
 
-.btn-pay:hover{
+.btn-pay:hover {
   color: #121212;
   background-color: #ffffff;
   padding: 8px;
@@ -676,7 +673,6 @@ h2 {
   border-color: #ffffff;
   width: 25%;
 }
-
 
 /* Para dispositivos pequeños, ajustamos las columnas a una sola */
 @media (max-width: 768px) {
@@ -688,317 +684,298 @@ h2 {
   }
 }
 
-
-
-
 /* ------------------ */
 /* - LOGIN/REGISTER - */
 /* ------------------ */
 
-
-:root{
-    --white: #fff;
-    --black: #000; 
-    --lightBulue: #17a;
+:root {
+  --white: #fff;
+  --black: #000;
+  --lightBulue: #17a;
 }
 
-
-.general{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+.general {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.wp-user{
-    position: relative;
-    width: 750px;
-    height: 450px;
-    background: var(--white);
-    border: 2px solid var(--black);
-    box-shadow: 0 0 20px var(--black);
-    overflow: hidden;
+.wp-user {
+  position: relative;
+  width: 750px;
+  height: 450px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  box-shadow: 0 0 20px var(--black);
+  overflow: hidden;
 }
 
-
-.wp-user .form-box{
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.wp-user .form-box {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.wp-user .form-box.login{
-    left: 0;
-    padding: 0 60px 0 40px;
+.wp-user .form-box.login {
+  left: 0;
+  padding: 0 60px 0 40px;
 }
 
-.form-box h2{
-    margin-bottom: 10px;
-    position: relative;
-    font-size: 32px;
-    color: var(--black);
-    text-align: center;
+.form-box h2 {
+  margin-bottom: 10px;
+  position: relative;
+  font-size: 32px;
+  color: var(--black);
+  text-align: center;
 }
 
-.form-box h2::after{
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 4px;
-    background: var(--black);
+.form-box h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: var(--black);
 }
 
-.form-box .input-box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 25px 0;
+.form-box .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 25px 0;
 }
 
-.input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    color: var(--black);
-    font-size: 16px;
-    font-weight: 500;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid var(--black);
-    transition: .5s;
-    padding-right: 23px;
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--black);
+  transition: 0.5s;
+  padding-right: 23px;
 }
 
 .input-box input:focus,
-.input-box input:valid{
-    border-bottom-color: var(--lightBulue);
+.input-box input:valid {
+  border-bottom-color: var(--lightBulue);
 }
 
-.input-box label{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: var(--black);
-    pointer-events: none;
-    transition: 0.5s;
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--black);
+  pointer-events: none;
+  transition: 0.5s;
 }
 
-
-.input-box input:focus~label,
-.input-box input:valid~label{
-    top: -5px;
-    color: var(--lightBulue);
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+  color: var(--lightBulue);
 }
 
-
-.input-box i{
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    font-size: 18px;
-    transition: 0.5s;
+.input-box i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 18px;
+  transition: 0.5s;
 }
 
-.input-box input:focus~i,
-.input-box input:valid~i{
-    color: var(--lightBulue);
+.input-box input:focus ~ i,
+.input-box input:valid ~ i {
+  color: var(--lightBulue);
 }
 
-.btn-f{
-    width: 100%;
-    height: 45px;
-    background-color: var(--black) !important;
-    color: var(--white) !important;
-    border: none !important;
-    outline: none !important;
-    cursor: pointer !important;
-    font-size: 16px !important;
-    font-weight: 600 !important ;
-    border-radius: 0px !important;
-
+.btn-f {
+  width: 100%;
+  height: 45px;
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 0px !important;
 }
 
-/* eliminar si no funciona como ahora basicamente */
-.btn-f:hover{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
+.btn-f:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
 }
 
-form .linkTxt{
-    font-size: 14px;
-    color: var(--black);
-    text-align: center;
-    margin: 20px 0 10px;
+form .linkTxt {
+  font-size: 14px;
+  color: var(--black);
+  text-align: center;
+  margin: 20px 0 10px;
 }
 
-.linkTxt p a{
-    color: blue;
-    text-decoration: none;
-    font-weight: 600;
+.linkTxt p a {
+  color: blue;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-.wp-user .form-box.login .animation{
-    transform: translateX(0);
-    transition: 0.7s ease;
-    opacity: 1;
-    filter: blur(0);
-    transition-delay: calc(.1s * var(--j));
+.wp-user .form-box.login .animation {
+  transform: translateX(0);
+  transition: 0.7s ease;
+  opacity: 1;
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--j));
 }
 
-
-.wp-user.active .form-box.login .animation{
-    transform: translateX(-120%);
-    opacity: 0;
-    filter: blur(10px);
-    transition-delay: calc(.1s * var(--i));
+.wp-user.active .form-box.login .animation {
+  transform: translateX(-120%);
+  opacity: 0;
+  filter: blur(10px);
+  transition-delay: calc(0.1s * var(--i));
 }
 
-.wp-user .info-text{
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.wp-user .info-text {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.wp-user .info-text.login{
-    right: 0;
-    text-align: right;
-    padding: 0 40px 60px 150px;
-
+.wp-user .info-text.login {
+  right: 0;
+  text-align: right;
+  padding: 0 40px 60px 150px;
 }
 
-.wp-user .info-text h2{
-    font-size: 36px;
-    color: var(--white);
-    line-height: 1.3;
-    text-transform: uppercase;
+.wp-user .info-text h2 {
+  font-size: 36px;
+  color: var(--white);
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
-.wp-user .info-text p{
-    font-size: 16px;
-    color: var(--white);
+.wp-user .info-text p {
+  font-size: 16px;
+  color: var(--white);
 }
 
-.wp-user .info-text.login .animation{
-    transform: translateX(0);
-    opacity: 1;
-    filter: blur(0);
-    transition: 0.7s ease;
-    transition-delay: calc(.1s * var(--j));
-}
-.wp-user.active .info-text.login .animation{
-    transform: translateX(120px);
-    opacity: 0;
-    filter: blur(10px);
-    transition: 0.7s ease;
-    transition-delay: calc(.1s * var(--i));
+.wp-user .info-text.login .animation {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--j));
 }
 
-.wp-user .rotate-bg{
-    position: absolute;
-    top: -4px;
-    right: 0;
-    width: 850px;
-    height: 600px;
-    background: #000;
-    transform: rotate(10deg) skewY(40deg);
-    transform-origin: bottom right;
-    transition: 1.5s ease;
-    transition-delay: 1.6s;
+.wp-user.active .info-text.login .animation {
+  transform: translateX(120px);
+  opacity: 0;
+  filter: blur(10px);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--i));
 }
 
-.wp-user.active .rotate-bg{
-    transform: rotate(0) skewY(0);
-    transition-delay: 0.5s;
+.wp-user .rotate-bg {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 850px;
+  height: 600px;
+  background: #000;
+  transform: rotate(10deg) skewY(40deg);
+  transform-origin: bottom right;
+  transition: 1.5s ease;
+  transition-delay: 1.6s;
 }
 
-.wp-user .form-box.register{
-    padding: 0 40px 0 60px;
-    right: 0;
+.wp-user.active .rotate-bg {
+  transform: rotate(0) skewY(0);
+  transition-delay: 0.5s;
 }
 
-.wp-user.active .form-box.register{
-    pointer-events: auto;
+.wp-user .form-box.register {
+  padding: 0 40px 0 60px;
+  right: 0;
 }
 
-
-.wp-user .form-box.register .animation{
-    transform: translateX(120%);
-    opacity: 0;
-    filter: blur(10px);
-    transition: .7s ease;
-    transition-delay: calc(.1s * var(--j));
+.wp-user.active .form-box.register {
+  pointer-events: auto;
 }
 
-.wp-user.active .form-box.register .animation{
-    transform: translateX(0);
-    opacity: 1;
-    filter: blur(0);
-    transition-delay: calc(.1s * var(--i));
+.wp-user .form-box.register .animation {
+  transform: translateX(120%);
+  opacity: 0;
+  filter: blur(10px);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--j));
 }
 
-
-
-.wp-user .info-text.register{
-    left: 0;
-    text-align: left;
-    padding: 0 150px 60px 40px;
-    pointer-events: none;
+.wp-user.active .form-box.register .animation {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
+  transition-delay: calc(0.1s * var (--i));
 }
 
-.wp-user.active .info-text.register{
-    pointer-events: auto;
+.wp-user .info-text.register {
+  left: 0;
+  text-align: left;
+  padding: 0 150px 60px 40px;
+  pointer-events: none;
 }
 
-
-.wp-user .info-text.register .animation{
-    transform: translateX(-120%);
-    opacity: 0;
-    filter: blur(10px);
-    transition: .7s ease;
-    transition-delay: calc(.1s * var(--j));
+.wp-user.active .info-text.register {
+  pointer-events: auto;
 }
 
-.wp-user.active .info-text.register .animation{
-    transform: translateX(0);
-    opacity: 1;
-    filter: blur(0);
-    transition-delay: calc(.1s * var(--i));
+.wp-user .info-text.register .animation {
+  transform: translateX(-120%);
+  opacity: 0;
+  filter: blur(10px);
+  transition: 0.7s ease;
+  transition-delay: calc(0.1s * var(--j));
 }
 
-
-.wp-user .rotate-bg2{
-    position: absolute;
-    top: 100%;
-    left: 250px;
-    width: 850px;
-    height: 700px;
-    background: var(--white);
-    transform: rotate(0) skewY(0);
-    transform-origin: bottom left;
-    transition: 1.5s ease;
-    transition-delay: 0.5s;
+.wp-user.active .info-text.register .animation {
+  transform: translateX(0);
+  opacity: 1;
+  filter: blur(0);
+  transition-delay: calc(0.1s * var(--i));
 }
 
-.wp-user.active .rotate-bg2{
-    transform: rotate(-11deg) skewY(-40deg);
-    transition-delay: 1.2s;
+.wp-user .rotate-bg2 {
+  position: absolute;
+  top: 100%;
+  left: 250px;
+  width: 850px;
+  height: 700px;
+  background: var(--white);
+  transform: rotate(0) skewY(0);
+  transform-origin: bottom left;
+  transition: 1.5s ease;
+  transition-delay: 0.5s;
 }
 
-
-
+.wp-user.active .rotate-bg2 {
+  transform: rotate(-11deg) skewY(-40deg);
+  transition-delay: 1.2s;
+}
 
 /* ------------------ */
 /* -- PERFIL USER -- */
@@ -1088,4 +1065,10 @@ form .linkTxt{
   background-color: #181818;
   padding: 10px;
   overflow: auto;
+}
+
+.ultimo-pedido{
+  margin-top: 20px;
+  font-size: 14px;
+  padding: 10px;
 }
