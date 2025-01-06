@@ -20,11 +20,10 @@ class UsuariosDAO {
         if ($row = $result->fetch_assoc()) {
             // Crea un objeto Usuario
             $usuario = new Usuario(
-          
                 $row['nombre'],      
                 $row['apellidos'],   
                 $row['password'],      
-                $row['email'],         
+                $row['email']
             );
 
             $usuario->setId($row['id']);  // Asigna el id al objeto Usuario
@@ -47,66 +46,60 @@ class UsuariosDAO {
         $row = $result->fetch_assoc();
         return $row['total'] > 0; // Devuelve true si el email existe
     }
-    
-    
-
 
     public static function insertarUsuario($usuario) {
-    // Realizamos la conexión a la DB
-    $con = DataBase::connect();
+        // Realizamos la conexión a la DB
+        $con = DataBase::connect();
 
-    // Preparamos la consulta SQL
-    $sql = "INSERT INTO users (nombre, apellidos, password, email) 
-            VALUES (?, ?, ?, ?)";
+        // Preparamos la consulta SQL
+        $sql = "INSERT INTO users (nombre, apellidos, password, email) 
+                VALUES (?, ?, ?, ?)";
 
-    $stmt = $con->prepare($sql);
-    
-    // Enlazamos los parámetros con los tipos correspondientes
-    $stmt->bind_param('ssss', 
-        $usuario->getNombre(),
-        $usuario->getApellidos(),
-        $usuario->getPassword(),
-        $usuario->getEmail()
-       
-    );
+        $stmt = $con->prepare($sql);
+        
+        // Enlazamos los parámetros con los tipos correspondientes
+        $stmt->bind_param('ssss', 
+            $usuario->getNombre(),
+            $usuario->getApellidos(),
+            $usuario->getPassword(),
+            $usuario->getEmail()
+        );
 
-    // Ejecutamos la consulta
-    $result = $stmt->execute();
+        // Ejecutamos la consulta
+        $result = $stmt->execute();
 
-    $con->close();
+        $con->close();
 
-    return $result;  // Devuelve true si la inserción fue exitosa
-}
-
-public static function actualizarUsuario($usuario) {
-    // Realizamos la conexión a la DB
-    $con = DataBase::connect();
-
-    // Preparamos la consulta SQL
-    $sql = "UPDATE users SET nombre = ?, apellidos = ?, telefono = ?, direccion = ? WHERE id = ?";
-
-    $stmt = $con->prepare($sql);
-    
-    // Enlazamos los parámetros con los tipos correspondientes
-    $stmt->bind_param('ssssi', 
-        $usuario->getNombre(),
-        $usuario->getApellidos(),
-        $usuario->getTelefono(),
-        $usuario->getDireccion(),
-        $usuario->getId()
-    );
-
-    // Ejecutamos la consulta
-    $result = $stmt->execute();
-
-    $con->close();
-
-    return $result;  // Devuelve true si la actualización fue exitosa   
+        return $result;  // Devuelve true si la inserción fue exitosa
     }
 
-    
+    public static function actualizarUsuario($usuario) {
+        // Realizamos la conexión a la DB
+        $con = DataBase::connect();
 
-    //Contar pedidos de un usuario
+        // Preparamos la consulta SQL
+        $sql = "UPDATE users SET nombre = ?, apellidos = ?, telefono = ?, direccion = ? WHERE id = ?";
+
+        $stmt = $con->prepare($sql);
+        
+        // Enlazamos los parámetros con los tipos correspondientes
+        $stmt->bind_param('ssssi', 
+            $usuario->getNombre(),
+            $usuario->getApellidos(),
+            $usuario->getTelefono(),
+            $usuario->getDireccion(),
+            $usuario->getId()
+        );
+
+        // Ejecutamos la consulta
+        $result = $stmt->execute();
+
+        $con->close();
+
+        return $result;  // Devuelve true si la actualización fue exitosa   
+    }
+
+    // Contar pedidos de un usuario
     public static function contarPedidos($idUser) {
         // Realizamos la conexión a la DB
         $con = DataBase::connect();
@@ -144,7 +137,16 @@ public static function actualizarUsuario($usuario) {
         $con->close();
         return null; 
     }
-
-
+    
+    public static function getOfertas($id) {
+        $con = DataBase::connect();
+        $stmt = $con->prepare("SELECT descuento_porcentaje FROM ofertas WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $oferta = $result->fetch_assoc();
+        $con->close();
+        return $oferta;
+    }   
 }
 ?>

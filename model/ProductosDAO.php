@@ -2,21 +2,21 @@
 include_once 'config/dataBase.php';
 include_once 'model/Producto.php';
 
-class ProductosDAO{
+class ProductosDAO {
 
-    public static function getProductos(){
-        //Realizamos la conexión a la DB
+    public static function getProductos() {
+        // Realizamos la conexión a la DB
         $con = DataBase::connect();
-        //Preparamos la consulta SQL    
-        $stmt = $con->prepare("Select * from RESTAURANTE.productos");
+        // Preparamos la consulta SQL    
+        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.productos");
 
-        //Ejecutamos la consulta
+        // Ejecutamos la consulta
         $stmt->execute();
         $result = $stmt->get_result();
 
-        //Creamos el array donde almacenaremos los datos que encontremos con fetch
+        // Creamos el array donde almacenaremos los datos que encontremos con fetch
         $productos = [];
-        //Bucle para recopilar los datos con fetch
+        // Bucle para recopilar los datos con fetch
         while ($producto = $result->fetch_object("Producto")) {
             $productos[] = $producto;
         }
@@ -47,8 +47,6 @@ class ProductosDAO{
         return null; // Retorna null si no se encuentra el producto
     }
 
-
-    
     public static function insertarPedido($idUser, $total, $numeroPago) {
         // Conectarse a la base de datos
         $con = DataBase::connect();
@@ -67,7 +65,7 @@ class ProductosDAO{
         return $resultado;
     }
 
-    //sin uso
+    // sin uso
     public static function getOfertaById($id) {
         // Realizamos la conexión a la DB
         $con = DataBase::connect();

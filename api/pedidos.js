@@ -25,13 +25,11 @@ async function mostrarPedidos(pedidos) {
     });
 }
 
-
 async function getPedidos(accion) {
     const response = await fetch(`?controller=api&action=getPedidos&order=${accion}`);
     const pedidos = await response.json();
     mostrarPedidos(pedidos);
 }
-
 
 async function deletePedido(id) {
     const confirmacion = confirm("¿Estás seguro de que deseas eliminar este pedido?");
@@ -138,9 +136,6 @@ async function createPedido() {
     });
 }
 
-
-
-
 // Event listeners
 document.getElementById("getPedidos").addEventListener("click", getPedidos);
 document.getElementById("newPedido").addEventListener("click", createPedido);
@@ -163,5 +158,3 @@ document.querySelector('#pedidosTable tbody').addEventListener('click', function
         editPedido(id_pedido);
     }
 });
-
-

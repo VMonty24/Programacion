@@ -56,9 +56,9 @@ async function editUsuario(id) {
         <label class="form-label" for="editApellidos">Apellidos</label>
         <input type="text" id="editApellidos" class="form-input" placeholder="Apellidos" value="${usuario.apellidos}">
         <label class="form-label" for="editPassword">Password</label>
-        <input type="password" id="editPassword" class="form-input" placeholder="Password" value="${usuario.password} required">
+        <input type="password" id="editPassword" class="form-input" placeholder="Password" value="${usuario.password}" required>
         <label class="form-label" for="editEmail">Email</label>
-        <input type="email" id="editEmail" class="form-input" placeholder="Email" value="${usuario.email} required">
+        <input type="email" id="editEmail" class="form-input" placeholder="Email" value="${usuario.email}" required>
         <label class="form-label" for="editTelefono">Teléfono</label>
         <input type="text" id="editTelefono" class="form-input" placeholder="Teléfono" value="${usuario.telefono}">
         <label class="form-label" for="editDireccion">Dirección</label>
@@ -147,8 +147,6 @@ async function createUsuario() {
     });
 }
 
-
-
 // Event listeners
 document.getElementById("getUsuarios").addEventListener("click", getUsuarios);
 document.getElementById("newUsuario").addEventListener("click", createUsuario);
@@ -164,4 +162,3 @@ document.querySelector('#usuariosTable tbody').addEventListener('click', functio
         editUsuario(id_usuario);
     }
 });
-

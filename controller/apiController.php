@@ -4,47 +4,47 @@ include_once 'config/dataBase.php';
 
 class apiController {
 
-//LOGS
-function putLogs($action, $data) {
-    $logFile = 'api/logs.log';
-    $timestamp = date("Y-m-d H:i:s");
-    $logMessage = "[$timestamp] Action: $action, Data: " . json_encode($data) . "\n";
+    // LOGS
+    function putLogs($action, $data) {
+        $logFile = 'api/logs.log';
+        $timestamp = date("Y-m-d H:i:s");
+        $logMessage = "[$timestamp] Action: $action, Data: " . json_encode($data) . "\n";
 
-    file_put_contents($logFile, $logMessage, FILE_APPEND);
-}
+        file_put_contents($logFile, $logMessage, FILE_APPEND);
+    }
 
-function getLogs() {
-    $logFile = 'api/logs.log';
+    function getLogs() {
+        $logFile = 'api/logs.log';
 
-    if (file_exists($logFile)) {
-        $logs = file_get_contents($logFile);
+        if (file_exists($logFile)) {
+            $logs = file_get_contents($logFile);
 
-        if ($logs !== false) {
-            header('Content-Type: application/json');
-            echo json_encode(array('status' => 'success', 'logs' => $logs));
+            if ($logs !== false) {
+                header('Content-Type: application/json');
+                echo json_encode(array('status' => 'success', 'logs' => $logs));
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(array('status' => 'error', 'message' => 'No se pudo leer el archivo de logs.'));
+            }
         } else {
             header('Content-Type: application/json');
-            echo json_encode(array('status' => 'error', 'message' => 'No se pudo leer el archivo de logs.'));
+            echo json_encode(array('status' => 'error', 'message' => 'No se encontró el archivo de logs.'));
         }
-    } else {
-        header('Content-Type: application/json');
-        echo json_encode(array('status' => 'error', 'message' => 'No se encontró el archivo de logs.'));
     }
-}
 
-function deleteLogs() {
-    $logFile = 'api/logs.log';
+    function deleteLogs() {
+        $logFile = 'api/logs.log';
 
-    if (file_put_contents($logFile, '') !== false) {
-        header('Content-Type: application/json');
-        echo json_encode(array('status' => 'success', 'message' => 'Logs eliminados correctamente.'));
-    } else {
-        header('Content-Type: application/json');
-        echo json_encode(array('status' => 'error', 'message' => 'No se pudo eliminar el archivo de logs.'));
+        if (file_put_contents($logFile, '') !== false) {
+            header('Content-Type: application/json');
+            echo json_encode(array('status' => 'success', 'message' => 'Logs eliminados correctamente.'));
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode(array('status' => 'error', 'message' => 'No se pudo eliminar el archivo de logs.'));
+        }
     }
-}
 
-    //FUNCIONES PRODUCTOS 
+    // FUNCIONES PRODUCTOS 
     function getProductos() {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM RESTAURANTE.productos");
@@ -56,7 +56,7 @@ function deleteLogs() {
             $productos[] = $producto;
         }
         $con->close();
-    
+
         header('Content-Type: application/json');
         echo json_encode($productos);
     }
@@ -68,22 +68,20 @@ function deleteLogs() {
         $stmt = $con->prepare("DELETE FROM RESTAURANTE.productos WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        
 
         if ($stmt->affected_rows > 0) {
             $this->putLogs("deleteProducto", $oldData);
             $response = array('status' => 'success', 'message' => 'Producto eliminado correctamente.');
         } else {
-            $this->putLogs("ERROR deleteProducto", array('id: '.$id));
+            $this->putLogs("ERROR deleteProducto", array('id: ' . $id));
             $response = array('status' => 'error', 'message' => 'No se pudo eliminar el producto.');
         }
 
         $con->close();
-    
+
         header('Content-Type: application/json');
         echo json_encode($response);
     }
-
 
     function getProductoById($id) {
         $con = DataBase::connect();
@@ -91,14 +89,13 @@ function deleteLogs() {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-    
+
         $producto = $result->fetch_assoc();
         $con->close();
-        
+
         header('Content-Type: application/json');
         echo json_encode($producto);
     }
-    
 
     function updateProducto() {
         $data = json_decode(file_get_contents("php://input"), true);
@@ -109,11 +106,10 @@ function deleteLogs() {
             $stmt = $con->prepare("UPDATE RESTAURANTE.productos SET nombre = ?, descripcion = ?, precio = ?, categoria = ?, image = ? WHERE id = ?");
             $stmt->bind_param("ssdssi", $data['nombre'], $data['descripcion'], $data['precio'], $data['categoria'], $data['image'], $data['id']);
             $stmt->execute();
-            
 
             if ($stmt->affected_rows > 0) {
                 $response = array('status' => 'success', 'message' => 'Producto actualizado correctamente.');
-                $this->putLogs("updateProducto",array ('oldData: ' => $oldData));
+                $this->putLogs("updateProducto", array('oldData: ' => $oldData));
             } else {
                 $response = array('status' => 'error', 'message' => 'No se pudo actualizar el producto.');
                 $this->putLogs("Error updateProducto", array($data));
@@ -138,7 +134,7 @@ function deleteLogs() {
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
-                $this->putLogs("createProducto", array('id: '.$data['id']));
+                $this->putLogs("createProducto", array('id: ' . $data['id']));
                 $response = array('status' => 'success', 'message' => 'Producto creado correctamente.');
             } else {
                 $this->putLogs("Error createProducto", array($data));
@@ -153,12 +149,8 @@ function deleteLogs() {
         header('Content-Type: application/json');
         echo json_encode($response);
     }
-            
 
-
-
-    //FUNCIONES USUARIOS
-
+    // FUNCIONES USUARIOS
     function getUsuarios() {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM RESTAURANTE.users");
@@ -170,11 +162,10 @@ function deleteLogs() {
             $usuarios[] = $usuario;
         }
         $con->close();
-    
+
         header('Content-Type: application/json');
         echo json_encode($usuarios);
     }
-
 
     function deleteUsuario($id) {
         $con = DataBase::connect();
@@ -189,7 +180,7 @@ function deleteLogs() {
             $this->putLogs("deleteUsuario", $oldData);
         } else {
             $response = array('status' => 'error', 'message' => 'No se pudo eliminar el usuario.');
-            $this->putLogs("ERROR deleteUsuario", array('id: '.$id));
+            $this->putLogs("ERROR deleteUsuario", array('id: ' . $id));
         }
 
         $con->close();
@@ -226,7 +217,7 @@ function deleteLogs() {
 
             if ($stmt->affected_rows > 0) {
                 $response = array('status' => 'success', 'message' => 'Usuario actualizado correctamente.');
-                 $this->putLogs("updateUsuario", array('oldData: ' => $oldData));
+                $this->putLogs("updateUsuario", array('oldData: ' => $oldData));
             } else {
                 $response = array('status' => 'error', 'message' => 'No se pudo actualizar el usuario.');
                 $this->putLogs("Error updateUsuario", array($data));
@@ -252,7 +243,7 @@ function deleteLogs() {
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
-                $this->putLogs("createUsuario", array('id: '.$data['email']));
+                $this->putLogs("createUsuario", array('id: ' . $data['email']));
                 $response = array('status' => 'success', 'message' => 'Usuario creado correctamente.');
             } else {
                 $this->putLogs("Error createUsuario", array($data));
@@ -268,10 +259,7 @@ function deleteLogs() {
         echo json_encode($response);
     }
 
-
-
-
-    // FUNCINES PEDIDOS
+    // FUNCIONES PEDIDOS
     function getPedidos() {
         $accion = $_GET['order'] ?? null;
 
@@ -326,7 +314,7 @@ function deleteLogs() {
             $this->putLogs("deletePedido", $oldData);
             $response = array('status' => 'success', 'message' => 'Pedido eliminado correctamente.');
         } else {
-            $this->putLogs("ERROR deletePedido", array('id: '.$id));
+            $this->putLogs("ERROR deletePedido", array('id: ' . $id));
             $response = array('status' => 'error', 'message' => 'No se pudo eliminar el pedido.');
         }
 
@@ -353,7 +341,7 @@ function deleteLogs() {
     function updatePedido() {
         $data = json_decode(file_get_contents("php://input"), true);
 
-        if (isset($data['id'],$data['id_usuario'], $data['total'], $data['metodo_pago'], $data['fecha'])) {
+        if (isset($data['id'], $data['id_usuario'], $data['total'], $data['metodo_pago'], $data['fecha'])) {
             $con = DataBase::connect();
             $oldData = $con->query("SELECT * FROM RESTAURANTE.pedidos WHERE id = $data[id]")->fetch_assoc();
 
@@ -363,7 +351,7 @@ function deleteLogs() {
 
             if ($stmt->affected_rows > 0) {
                 $response = array('status' => 'success', 'message' => 'Pedido actualizado correctamente.');
-                $this->putLogs("updatePedido", array('oldData:'=>$oldData));
+                $this->putLogs("updatePedido", array('oldData:' => $oldData));
             } else {
                 $response = array('status' => 'error', 'message' => 'No se pudo actualizar el pedido.');
                 $this->putLogs("Error updatePedido", array($data));
@@ -389,7 +377,7 @@ function deleteLogs() {
 
             if ($stmt->affected_rows > 0) {
                 $response = array('status' => 'success', 'message' => 'Pedido creado correctamente.');
-                $this->putLogs("createPedido", array('id_usuario: '.$data['id_usuario']));
+                $this->putLogs("createPedido", array('id_usuario: ' . $data['id_usuario']));
             } else {
                 $response = array('status' => 'error', 'message' => 'No se pudo crear el pedido.');
                 $this->putLogs("Error createPedido", array($data));

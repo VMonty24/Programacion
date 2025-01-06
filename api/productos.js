@@ -22,8 +22,6 @@ function mostrarProductos(productos) {
     });
 }
 
-
-
 async function getProductos() {
     const response = await fetch('?controller=api&action=getProductos');
     const productos = await response.json();
@@ -38,7 +36,6 @@ async function deleteProducto(id) {
     const data = await response.json();
 
     console.log(data); // Agregar esta línea para ver el contenido de data
-    
 
     if (data.status === "success") {
         alert(data.message);
@@ -51,7 +48,7 @@ async function deleteProducto(id) {
 async function editProducto(id) {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
-    
+
     // Obtener los datos del producto desde el servidor
     const response = await fetch(`?controller=api&action=getProductoById&id=${id}`);
     const producto = await response.json();
@@ -145,17 +142,9 @@ async function createProducto() {
     });
 }
 
-
-
-
-
 // Event listeners
 document.getElementById("getProductos").addEventListener("click", getProductos);
-document.getElementById("newProducto").addEventListener("click", createProducto); 
-
-
-
-
+document.getElementById("newProducto").addEventListener("click", createProducto);
 
 document.querySelector('#productosTable tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete')) {

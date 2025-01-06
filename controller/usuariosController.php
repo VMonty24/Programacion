@@ -10,8 +10,17 @@ class usuariosController {
         include_once 'view/main.php';
     }
 
-    public function admin(){
-        include_once 'api/admin_panel.html';
+    public function admin() {
+        // Hacemos que si no se ha iniciado sesión con admin no pueda acceder al panel de admin
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $usuario = $_SESSION['usuario'];
+            if ($usuario->getNombre() === 'admin') {
+                include_once 'api/admin_panel.html';
+            }
+        } else {
+            header('Location: ?controller=usuarios&action=login');
+        }
     }
 
     public function userDetails() {
@@ -29,16 +38,15 @@ class usuariosController {
             header('Location: ?controller=usuarios&action=login');
         }
     }
-    
 
     public function doLogin() {
         session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
-    
+
             $usuario = UsuariosDAO::obtenerPorEmail($email);
-    
+
             if ($usuario && password_verify($password, $usuario->getPassword())) {
                 if ($email === 'admin@admin.com') {
                     $_SESSION['usuario'] = $usuario;
@@ -55,33 +63,32 @@ class usuariosController {
             }
         }
     }
-    
-    
+
     public function doRegister() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Capturar el campo de nombre completo
             $nombre_apellidos = $_POST['nombre_apellidos'];
-    
+
             // Dividir en nombre y apellidos
             $partes = explode(' ', $nombre_apellidos, 2);
             $nombre = $partes[0];
             $apellidos = isset($partes[1]) ? $partes[1] : '';
-    
+
             // Capturar los demás datos del formulario
             $email = $_POST['email'];
-    
+
             // Comprobar si el email ya existe
             if (UsuariosDAO::checkEmail($email)) {
                 echo '<script>alert("El email ya está registrado.");</script>';
                 $this->login();
                 return;
             }
-    
+
             // Continuar con el registro
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
             $usuario = new Usuario($nombre, $apellidos, $password, $email);
             $exito = UsuariosDAO::insertarUsuario($usuario);
-    
+
             if ($exito === true) {
                 session_start();
                 $_SESSION['usuario'] = $usuario;
@@ -94,7 +101,7 @@ class usuariosController {
             }
         }
     }
-    
+
     public function logout() {
         session_start();
         session_destroy();
@@ -112,10 +119,9 @@ class usuariosController {
             $usuario->setApellidos($_POST['apellidos']);
             $usuario->setTelefono($_POST['telefono']);
             $usuario->setDireccion($_POST['direccion']);
-    
 
             $exito = UsuariosDAO::actualizarUsuario($usuario);
-    
+
             if ($exito === true) {
                 $_SESSION['usuario'] = $usuario;
                 $_SESSION['mensaje'] = "Datos actualizados con exito.";
@@ -138,5 +144,3 @@ class usuariosController {
     }
 
 }
-
-

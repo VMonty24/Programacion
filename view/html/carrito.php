@@ -5,6 +5,7 @@ $carrito = isset($_SESSION['carrito']) ? $_SESSION['carrito'] : [];
 $resultados = productoController::calcTotal();
 $total = $resultados['total'];
 $descuento = $resultados['descuento'];
+$oferta = $resultados['oferta'];
 ?>
 
 <div class="figura">
@@ -36,13 +37,9 @@ $descuento = $resultados['descuento'];
 
     <!-- Coste Total -->
     <div class="cart-total">
-      <p>COSTE TOTAL DEL PEDIDO
-        <span><?php echo number_format($total, 2) . '€'; ?></span>
-      </p>
-
       <?php if ($descuento > 0): ?>
         <p>DESCUENTO APLICADO
-          <span><?php echo number_format($descuento, 2) . '€'; ?></span>
+          <span><?php echo '-' . $oferta . '%  = ' .  number_format($descuento,2) . '€'; ?></span>
         </p>
       <?php endif; ?>
 
@@ -56,6 +53,10 @@ $descuento = $resultados['descuento'];
           <span><?php echo number_format($suma, 2) . '€'; ?></span>
         </p>
       <?php endif; ?>
+
+      <p>COSTE TOTAL DEL PEDIDO
+        <span><?php echo number_format($total, 2) . '€'; ?></span>
+      </p>
     </div>
   <?php else: ?>
     <p style="text-align: center; color: #fff;">El carrito está vacío.</p>
@@ -106,6 +107,4 @@ $descuento = $resultados['descuento'];
     <button class="btn-pay" type="submit">Enviar</button>
   </form>
 </div>
-<?php
-var_dump($_SESSION['usuario']);
-?>
+
