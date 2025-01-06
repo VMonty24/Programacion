@@ -1,6 +1,6 @@
 <?php
 
-include_once 'config/dataBase.php';
+include_once 'config/DataBase.php';
 
 class apiController {
 
@@ -47,10 +47,7 @@ class apiController {
     // FUNCIONES PRODUCTOS 
     function getProductos() {
         $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM productos");
-        $stmt->execute();
-        $result = $stmt->get_result();
-
+        $result = $con->prepare("SELECT * FROM productos");
         $productos = [];
         while ($producto = $result->fetch_assoc()) {
             $productos[] = $producto;
@@ -59,6 +56,7 @@ class apiController {
 
         header('Content-Type: application/json');
         echo json_encode($productos);
+
     }
 
     function deleteProducto($id) {

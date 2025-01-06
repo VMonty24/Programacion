@@ -8,7 +8,7 @@ class ProductosDAO {
         // Realizamos la conexión a la DB
         $con = DataBase::connect();
         // Preparamos la consulta SQL    
-        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.productos");
+        $stmt = $con->prepare("SELECT * FROM productos");
 
         // Ejecutamos la consulta
         $stmt->execute();
@@ -30,7 +30,7 @@ class ProductosDAO {
         $con = DataBase::connect();
         
         // Preparamos la consulta SQL
-        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.productos WHERE id = ?");
+        $stmt = $con->prepare("SELECT * FROM productos WHERE id = ?");
         $stmt->bind_param("i", $id);  // Asociar el parámetro al id
     
         // Ejecutamos la consulta
@@ -71,7 +71,7 @@ class ProductosDAO {
         $con = DataBase::connect();
         
         // Preparamos la consulta SQL
-        $stmt = $con->prepare("SELECT * FROM RESTAURANTE.ofertas WHERE id = ?");
+        $stmt = $con->prepare("SELECT * FROM ofertas WHERE id = ?");
         $stmt->bind_param("i", $id);  // Asociar el parámetro al id
 
         // Ejecutamos la consulta

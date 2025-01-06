@@ -92,7 +92,7 @@ class usuariosController {
             if ($exito === true) {
                 session_start();
                 $_SESSION['usuario'] = $usuario;
-                header("Location:".url_base."?controller=producto");
+                header("Location: ?controller=producto");
                 exit();
             } else {
                 echo '<script>alert("Hubo un problema al registrar el usuario.");</script>';

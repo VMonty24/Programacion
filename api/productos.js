@@ -29,7 +29,7 @@ async function getProductos() {
 }
 
 async function deleteProducto(id) {
-    const confirmacion = confirm("¿Estás seguro de que deseas eliminar este pedido?");
+    const confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
     if (!confirmacion) return; // Detener si el usuario cancela
 
     const response = await fetch(`?controller=api&action=deleteProducto&id=${id}`);
