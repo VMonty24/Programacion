@@ -5,13 +5,14 @@ include_once 'model/Usuario.php';
 
 class usuariosController {
 
+    // Muestra la vista de login y registro
     public function login() {
         $views = 'view/html/login-register.php';
         include_once 'view/main.php';
     }
 
+    // Muestra el panel de administración si el usuario es admin
     public function admin() {
-        // Hacemos que si no se ha iniciado sesión con admin no pueda acceder al panel de admin
         session_start();
         if (isset($_SESSION['usuario'])) {
             $usuario = $_SESSION['usuario'];
@@ -23,6 +24,7 @@ class usuariosController {
         }
     }
 
+    // Muestra los detalles del usuario
     public function userDetails() {
         session_start();
         if (isset($_SESSION['usuario'])) {
@@ -39,6 +41,7 @@ class usuariosController {
         }
     }
 
+    // Procesa el login del usuario
     public function doLogin() {
         session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -64,6 +67,7 @@ class usuariosController {
         }
     }
 
+    // Procesa el registro del usuario
     public function doRegister() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Capturar el campo de nombre completo
@@ -102,6 +106,7 @@ class usuariosController {
         }
     }
 
+    // Cierra la sesión del usuario
     public function logout() {
         session_start();
         session_destroy();
@@ -110,6 +115,7 @@ class usuariosController {
         $_SESSION['mensaje'] = "Session cerrada con exito.";
     }
 
+    // Actualiza los datos del usuario
     public function actualizarUsuario() {
         session_start();
 
@@ -134,6 +140,7 @@ class usuariosController {
         }
     }
 
+    // Redirige a la página de carta si el usuario ha iniciado sesión y sino al loging
     public function redirectOfertas() {
         session_start();
         if (isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])) {

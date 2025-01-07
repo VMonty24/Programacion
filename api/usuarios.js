@@ -1,9 +1,11 @@
+// Función para mostrar los usuarios en una tabla
 function mostrarUsuarios(usuarios) {
     noneDisplay();
     document.getElementById("usuariosTableContainer").style.display = "block";
     const usuariosTable = document.getElementById("usuariosTable").getElementsByTagName("tbody")[0];
     usuariosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
 
+    // Añadir cada usuario a la tabla
     usuarios.forEach(usuario => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
@@ -23,12 +25,14 @@ function mostrarUsuarios(usuarios) {
     });
 }
 
+// Función para obtener los usuarios desde la API
 async function getUsuarios() {
     const response = await fetch('?controller=api&action=getUsuarios');
     const usuarios = await response.json();
     mostrarUsuarios(usuarios);
 }
 
+// Función para eliminar un usuario
 async function deleteUsuario(id) {
     const confirmacion = confirm("¿Estás seguro de que deseas eliminar este usuario?");
     if (!confirmacion) return;
@@ -44,12 +48,14 @@ async function deleteUsuario(id) {
     }
 }
 
+// Función para editar un usuario
 async function editUsuario(id) {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
     const response = await fetch(`?controller=api&action=getUsuarioById&id=${id}`);
     const usuario = await response.json();
 
+    // Rellenar el formulario con los datos del usuario
     formContainer.innerHTML = `
         <label class="form-label" for="editNombre">Nombre</label>
         <input type="text" id="editNombre" class="form-input" placeholder="Nombre" value="${usuario.nombre}">
@@ -66,6 +72,7 @@ async function editUsuario(id) {
         <button id="submitEditarUsuario" class="btn-admin">Editar Usuario</button>
     `;
 
+    // Evento para enviar los datos actualizados del usuario
     document.getElementById("submitEditarUsuario").addEventListener("click", async function() {
         const updatedUsuario = {
             id: usuario.id,
@@ -96,10 +103,12 @@ async function editUsuario(id) {
     });
 }
 
+// Función para crear un nuevo usuario
 async function createUsuario() {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
 
+    // Rellenar el formulario para crear un nuevo usuario
     formContainer.innerHTML = `
         <label class="form-label" for="createNombre">Nombre</label>
         <input type="text" id="createNombre" class="form-input" placeholder="Nombre">
@@ -116,6 +125,7 @@ async function createUsuario() {
         <button id="submitCreateUsuario" class="btn-admin">Crear Usuario</button>
     `;
 
+    // Evento para enviar los datos del nuevo usuario
     document.getElementById("submitCreateUsuario").addEventListener("click", async function() {
         const newUsuario = {
             nombre: document.getElementById("createNombre").value,
@@ -147,10 +157,11 @@ async function createUsuario() {
     });
 }
 
-// Event listeners
+// Event listeners para los botones de obtener y crear usuarios
 document.getElementById("getUsuarios").addEventListener("click", getUsuarios);
 document.getElementById("newUsuario").addEventListener("click", createUsuario);
 
+// Event listener para los botones de editar y eliminar en la tabla de usuarios
 document.querySelector('#usuariosTable tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete')) {
         const row = event.target.closest('tr');

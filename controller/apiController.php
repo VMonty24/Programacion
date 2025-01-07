@@ -5,6 +5,7 @@ include_once 'config/dataBase.php';
 class apiController {
 
     // LOGS
+    // Function to log actions
     function putLogs($action, $data) {
         $logFile = 'api/logs.log';
         $timestamp = date("Y-m-d H:i:s");
@@ -13,6 +14,7 @@ class apiController {
         file_put_contents($logFile, $logMessage, FILE_APPEND);
     }
 
+    // Function to retrieve logs
     function getLogs() {
         $logFile = 'api/logs.log';
 
@@ -32,6 +34,7 @@ class apiController {
         }
     }
 
+    // Function to delete logs
     function deleteLogs() {
         $logFile = 'api/logs.log';
 
@@ -45,6 +48,7 @@ class apiController {
     }
 
     // FUNCIONES PRODUCTOS 
+    // Function to get all products
     function getProductos() {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM productos");
@@ -61,6 +65,7 @@ class apiController {
         echo json_encode($productos);
     }
 
+    // Function to delete a product by ID
     function deleteProducto($id) {
         $con = DataBase::connect();
         $oldData = $con->query("SELECT * FROM productos WHERE id = $id")->fetch_assoc();
@@ -83,6 +88,7 @@ class apiController {
         echo json_encode($response);
     }
 
+    // Function to get a product by ID
     function getProductoById($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM productos WHERE id = ?");
@@ -97,6 +103,7 @@ class apiController {
         echo json_encode($producto);
     }
 
+    // Function to update a product
     function updateProducto() {
         $data = json_decode(file_get_contents("php://input"), true);
         if (isset($data['id'], $data['nombre'], $data['descripcion'], $data['precio'], $data['categoria'], $data['image'])) {
@@ -124,6 +131,7 @@ class apiController {
         echo json_encode($response);
     }
 
+    // Function to create a new product
     function createProducto() {
         $data = json_decode(file_get_contents("php://input"), true);
 
@@ -151,6 +159,7 @@ class apiController {
     }
 
     // FUNCIONES USUARIOS
+    // Function to get all users
     function getUsuarios() {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM users");
@@ -167,6 +176,7 @@ class apiController {
         echo json_encode($usuarios);
     }
 
+    // Function to delete a user by ID
     function deleteUsuario($id) {
         $con = DataBase::connect();
         $oldData = $con->query("SELECT * FROM users WHERE id = $id")->fetch_assoc();
@@ -189,6 +199,7 @@ class apiController {
         echo json_encode($response);
     }
 
+    // Function to get a user by ID
     function getUsuarioById($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM users WHERE id = ?");
@@ -203,6 +214,7 @@ class apiController {
         echo json_encode($usuario);
     }
 
+    // Function to update a user
     function updateUsuario() {
         $data = json_decode(file_get_contents("php://input"), true);
 
@@ -232,6 +244,7 @@ class apiController {
         echo json_encode($response);
     }
 
+    // Function to create a new user
     function createUsuario() {
         $data = json_decode(file_get_contents("php://input"), true);
 
@@ -260,6 +273,7 @@ class apiController {
     }
 
     // FUNCIONES PEDIDOS
+    // Function to get all orders with optional sorting
     function getPedidos() {
         $accion = $_GET['order'] ?? null;
 
@@ -302,6 +316,7 @@ class apiController {
         echo json_encode($pedidos);
     }
 
+    // Function to delete an order by ID
     function deletePedido($id) {
         $con = DataBase::connect();
         $oldData = $con->query("SELECT * FROM pedidos WHERE id = $id")->fetch_assoc();
@@ -324,6 +339,7 @@ class apiController {
         echo json_encode($response);
     }
 
+    // Function to get an order by ID
     function getPedidoById($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM pedidos WHERE id = ?");
@@ -338,6 +354,7 @@ class apiController {
         echo json_encode($pedido);
     }
 
+    // Function to update an order
     function updatePedido() {
         $data = json_decode(file_get_contents("php://input"), true);
 
@@ -366,6 +383,7 @@ class apiController {
         echo json_encode($response);
     }
 
+    // Function to create a new order
     function createPedido() {
         $data = json_decode(file_get_contents("php://input"), true);
 

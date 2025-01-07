@@ -4,6 +4,7 @@ include_once 'model/Usuario.php';
 
 class UsuariosDAO {
 
+    // Obtener un usuario por su correo electrónico
     public static function obtenerPorEmail($email) {
         // Conectarse a la base de datos
         $con = DataBase::connect();
@@ -26,9 +27,10 @@ class UsuariosDAO {
                 $row['email']
             );
 
-            $usuario->setId($row['id']);  // Asigna el id al objeto Usuario
-            $usuario->setTelefono($row['telefono']);  // Asigna el teléfono al objeto Usuario
-            $usuario->setDireccion($row['direccion']);  // Asigna la dirección al objeto Usuario
+            // Asigna propiedades adicionales al objeto Usuario
+            $usuario->setId($row['id']);  
+            $usuario->setTelefono($row['telefono']);  
+            $usuario->setDireccion($row['direccion']);  
 
             return $usuario;  // Retorna el objeto Usuario
         }
@@ -36,6 +38,7 @@ class UsuariosDAO {
         return null;  // Retorna null si no se encuentra el usuario
     }
     
+    // Verificar si un correo electrónico ya está registrado
     public static function checkEmail($email) {
         $con = DataBase::connect();
         $sql = "SELECT COUNT(*) as total FROM users WHERE email = ?";
@@ -47,6 +50,7 @@ class UsuariosDAO {
         return $row['total'] > 0; // Devuelve true si el email existe
     }
 
+    // Insertar un nuevo usuario en la base de datos
     public static function insertarUsuario($usuario) {
         // Realizamos la conexión a la DB
         $con = DataBase::connect();
@@ -73,6 +77,7 @@ class UsuariosDAO {
         return $result;  // Devuelve true si la inserción fue exitosa
     }
 
+    // Actualizar la información de un usuario existente
     public static function actualizarUsuario($usuario) {
         // Realizamos la conexión a la DB
         $con = DataBase::connect();
@@ -99,7 +104,7 @@ class UsuariosDAO {
         return $result;  // Devuelve true si la actualización fue exitosa   
     }
 
-    // Contar pedidos de un usuario
+    // Contar el número de pedidos de un usuario
     public static function contarPedidos($idUser) {
         // Realizamos la conexión a la DB
         $con = DataBase::connect();
@@ -123,6 +128,7 @@ class UsuariosDAO {
         return $total;
     }
     
+    // Obtener el último pedido de un usuario
     public static function getUltimoPedido($idUser) {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT * FROM pedidos WHERE id_usuario = ? ORDER BY fecha DESC LIMIT 1");
@@ -138,6 +144,7 @@ class UsuariosDAO {
         return null; 
     }
     
+    // Obtener las ofertas 
     public static function getOfertas($id) {
         $con = DataBase::connect();
         $stmt = $con->prepare("SELECT descuento_porcentaje FROM ofertas WHERE id = ?");

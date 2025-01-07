@@ -3,28 +3,27 @@ include_once 'model/ProductosDAO.php';
 include_once 'model/Producto.php';
 
 class productoController {
+    // Método para mostrar la página principal
     public function index() {
         $views = 'view/html/home.php';
         include_once 'view/main.php';
     }
 
+    // Método para mostrar la carta de productos
     public function carta() {
         $productos = ProductosDAO::getProductos();
         $views = 'view/html/carta.php';
         include_once 'view/main.php';
     }
 
+    // Método para mostrar el carrito de compras
     public function carrito() {
         session_start();
         $views = 'view/html/carrito.php';
         include_once 'view/main.php';
     }
 
-    public function locales() {
-        $views = 'view/html/locales.php';
-        include_once 'view/main.php';
-    }
-
+    // Método para agregar un producto al carrito
     public function addToCart() {
         session_start();
 
@@ -43,7 +42,6 @@ class productoController {
                 // Comprobar si el producto ya está en el carrito
                 $found = false;
                 foreach ($_SESSION['carrito'] as &$item) {
-                    $productoID = $producto->getId();
                     if ($item['id'] === (int)$producto->getId()) {
                         // Si ya está en el carrito, incrementar la cantidad
                         $item['cantidad']++;
@@ -71,6 +69,7 @@ class productoController {
         }
     }
 
+    // Método para eliminar un producto del carrito
     public function removeFromCart() {
         session_start();
 
@@ -100,6 +99,7 @@ class productoController {
         exit;
     }
 
+    // Método para calcular el total del carrito con descuentos aplicados
     public function calcTotal() {
         $total = 0;
         $descuento = 0;
@@ -112,15 +112,15 @@ class productoController {
             }
         }
 
-        // Aplicar ofertas solo usuarios
+        // Aplicar ofertas solo para usuarios
         if (isset($_SESSION['usuario'])) {
 
-            // Aplicar descuento del los jueves
+            // Aplicar descuento de los jueves
             $diaActual = date('N'); // Devuelve el día de la semana (1: lunes, 7: domingo)
             if ($diaActual == 4) {
                 $oferta = UsuariosDAO::getOfertas(1);
                 $oferta = $oferta['descuento_porcentaje'];
-                $descuento += $total *  $oferta/100;
+                $descuento += $total *  $oferta / 100;
             }
 
             // Aplicar descuento para nuevos usuarios
@@ -130,12 +130,12 @@ class productoController {
                 if ($esNuevoUsuario === 0) {
                     $oferta2 = UsuariosDAO::getOfertas(2);
                     $oferta2 = $oferta2['descuento_porcentaje'];
-                    $descuento += $total *  $oferta2/100;
+                    $descuento += $total *  $oferta2 / 100;
                 }
             }
 
             $total -= $descuento;
-            $oferta +=$oferta2;
+            $oferta += $oferta2;
         }
 
         return [
@@ -145,6 +145,7 @@ class productoController {
         ];
     }
 
+    // Método para guardar un pedido
     public function savePedido() {
         session_start();
         // Verificar si el carrito no está vacío

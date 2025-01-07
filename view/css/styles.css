@@ -1,28 +1,32 @@
+/* Reset de márgenes y padding, y fuente global */
 * {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
+/* Evitar scroll horizontal */
 body {
   overflow-x: hidden;
 }
 
+/* Estilo de figura personalizada */
 .figura {
-  background-color: black; /* Fondo negro */
-  width: 150px; /* Ancho */
-  height: 30px; /* Altura */
+  background-color: black; 
+  width: 150px; 
+  height: 30px; 
   clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%); /* Figura recortada */
   position: relative; /* Necesario para posicionar el texto encima */
   margin-top: 10px;
 }
 
+/* Texto centrado dentro de la figura */
 .texto {
-  color: white; /* Color del texto */
-  font-size: 10px; /* Tamaño del texto */
-  position: absolute; /* Posición absoluta para centrarlo */
-  top: 50%; /* Centrar verticalmente */
-  left: 40%; /* Centrar horizontalmente */
+  color: white; 
+  font-size: 10px; 
+  position: absolute; 
+  top: 50%; 
+  left: 40%; 
   transform: translate(-50%, -50%); /* Ajuste preciso del centro */
 }
 
@@ -79,23 +83,25 @@ body {
   margin: 0;
 }
 
+/* Estilo de los enlaces de navegación */
 .nav-links {
   text-align: start;
 }
 
 .nav {
-  background-color: #181818; /* El color de fondo del nav */
+  background-color: #181818; 
 }
 
 .nav .nav-link {
-  color: #ffffff; /* Cambia el color de los enlaces */
+  color: #ffffff; 
   font-size: 12px;
 }
 
 .nav .nav-link:hover {
-  color: #bababa; /* Cambia el color de los enlaces cuando se pasa el mouse */
+  color: #bababa; 
 }
 
+/* Estilo de los iconos de navegación */
 .icon-nav {
   padding-right: 100px;
 }
@@ -105,7 +111,7 @@ body {
   height: 30px;
 }
 
-/* BOTON 1 */
+/* Estilo del botón 1 */
 .btn-1 {
   color: #ffffff !important;
   background-color: #202020;
@@ -135,11 +141,12 @@ body {
   background-position: center;
   background-size: cover;
   height: 595px;
-  display: flex; /* Activar Flexbox */
-  justify-content: center; /* Centra el contenido horizontalmente */
+  display: flex; 
+  justify-content: center; 
   align-items: center;
 }
 
+/* Estilo del título en el banner */
 .title {
   text-align: center;
   font-size: 140px;
@@ -211,7 +218,7 @@ img {
 
 .icono-flecha-l,
 .icono-flecha-r {
-  background-color: #202020 !important; /* Cambia el color de fondo */
+  background-color: #202020 !important; 
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); /* Forma de hexágono */
   height: 60px;
   width: 60px;
@@ -224,14 +231,14 @@ img {
 
 .icono-flecha-l:hover,
 .icono-flecha-r:hover {
-  content: url(../images/iconos/flecha\ negro\ .webp); /* Imagen al hacer hover */
+  content: url(../images/iconos/flecha\ negro\ .webp); 
   background-color: #ffffff !important;
 }
 
 .carousel-control-next,
 .carousel-control-prev {
-  opacity: 1 !important; /* Elimina la opacidad */
-  transition: none !important; /* Elimina la transición */
+  opacity: 1 !important; 
+  transition: none !important; 
 }
 
 /* ------------------ */
@@ -267,27 +274,27 @@ img {
 }
 
 .hexagon {
-  fill: transparent; /*Fondo blanco */
-  stroke: #ffffff; /* Borde negro */
+  fill: transparent; 
+  stroke: #ffffff; 
   stroke-width: 1.5px;
 }
 
 .icon {
   fill: none;
-  stroke: #ffffff; /* Color de la flecha */
+  stroke: #ffffff; 
   stroke-width: 2px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .icon-container:hover .hexagon {
-  fill: #ffffff; /* Cambia el color de fondo del hexágono al hacer hover */
+  fill: #ffffff; 
   stroke: #202020;
   stroke-width: 1px;
 }
 
 .icon-container:hover .icon {
-  stroke: #202020; /* Color de la flecha */
+  stroke: #202020; 
 }
 
 /* ------------------ */
@@ -339,6 +346,7 @@ img {
   padding: 40px;
 }
 
+/* Estilo del botón de oferta */
 .btn-2 {
   color: #202020;
   background-color: #ffffff;
@@ -362,10 +370,11 @@ img {
 /* ----------------- */
 /* ---- FOOTER ---- */
 /* ----------------- */
+
 /* Footer Container */
 footer.container-fluid.css-1r8ynqq {
-  background-color: #121212; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
+  background-color: #121212; 
+  color: #fff; 
 }
 
 /* Footer Menu */
@@ -449,13 +458,13 @@ footer.container-fluid.css-1r8ynqq {
 }
 
 .card-img-top {
-  height: 225px; /* Altura fija */
+  height: 225px; 
   object-fit: contain; /* Mantiene la relación de aspecto */
 }
 
 .fondo .card {
-  background-color: black; /* Fondo de las tarjetas negro */
-  color: white; /* Texto de las tarjetas blanco */
+  background-color: black; 
+  color: white; 
 }
 
 .card-text {
@@ -467,7 +476,7 @@ footer.container-fluid.css-1r8ynqq {
 .icon-container-add {
   width: 60px;
   height: 60px;
-  cursor: pointer; /* Cambia el cursor al pasar sobre el SVG */
+  cursor: pointer; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -524,7 +533,7 @@ footer.container-fluid.css-1r8ynqq {
   width: 150px;
   height: 80px;
   object-fit: contain;
-  margin-right: 20px;
+  margin-right: 20px; /* Espacio entre la imagen y los detalles */
 }
 
 .item-details h3 {
@@ -620,7 +629,7 @@ h2 {
 .form-row {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* Espaciado entre las columnas */
+  gap: 20px; 
   margin-bottom: 20px;
 }
 
@@ -688,12 +697,14 @@ h2 {
 /* - LOGIN/REGISTER - */
 /* ------------------ */
 
+/* Variables de colores */
 :root {
   --white: #fff;
   --black: #000;
   --lightBulue: #17a;
 }
 
+/* Contenedor general */
 .general {
   display: flex;
   justify-content: center;
@@ -701,6 +712,7 @@ h2 {
   min-height: 100vh;
 }
 
+/* Contenedor del formulario de usuario */
 .wp-user {
   position: relative;
   width: 750px;
@@ -711,6 +723,7 @@ h2 {
   overflow: hidden;
 }
 
+/* Caja del formulario */
 .wp-user .form-box {
   position: absolute;
   top: 0;
@@ -721,11 +734,13 @@ h2 {
   flex-direction: column;
 }
 
+/* Caja del formulario de login */
 .wp-user .form-box.login {
   left: 0;
   padding: 0 60px 0 40px;
 }
 
+/* Título del formulario */
 .form-box h2 {
   margin-bottom: 10px;
   position: relative;
@@ -734,6 +749,7 @@ h2 {
   text-align: center;
 }
 
+/* Línea decorativa debajo del título */
 .form-box h2::after {
   content: "";
   position: absolute;
@@ -745,6 +761,7 @@ h2 {
   background: var(--black);
 }
 
+/* Caja de entrada */
 .form-box .input-box {
   position: relative;
   width: 100%;
@@ -752,6 +769,7 @@ h2 {
   margin: 25px 0;
 }
 
+/* Estilo de los campos de entrada */
 .input-box input {
   width: 100%;
   height: 100%;
@@ -766,11 +784,13 @@ h2 {
   padding-right: 23px;
 }
 
+/* Efecto al enfocar o validar el campo de entrada */
 .input-box input:focus,
 .input-box input:valid {
   border-bottom-color: var(--lightBulue);
 }
 
+/* Etiqueta de los campos de entrada */
 .input-box label {
   position: absolute;
   top: 50%;
@@ -782,12 +802,14 @@ h2 {
   transition: 0.5s;
 }
 
+/* Efecto al enfocar o validar la etiqueta */
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
   top: -5px;
   color: var(--lightBulue);
 }
 
+/* Icono en los campos de entrada */
 .input-box i {
   position: absolute;
   top: 50%;
@@ -797,11 +819,13 @@ h2 {
   transition: 0.5s;
 }
 
+/* Efecto al enfocar o validar el icono */
 .input-box input:focus ~ i,
 .input-box input:valid ~ i {
   color: var(--lightBulue);
 }
 
+/* Botón del formulario */
 .btn-f {
   width: 100%;
   height: 45px;
@@ -815,10 +839,12 @@ h2 {
   border-radius: 0px !important;
 }
 
+/* Efecto hover en el botón */
 .btn-f:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
 }
 
+/* Texto de enlace */
 form .linkTxt {
   font-size: 14px;
   color: var(--black);
@@ -826,12 +852,14 @@ form .linkTxt {
   margin: 20px 0 10px;
 }
 
+/* Estilo de los enlaces */
 .linkTxt p a {
   color: blue;
   text-decoration: none;
   font-weight: 600;
 }
 
+/* Animación del formulario de login */
 .wp-user .form-box.login .animation {
   transform: translateX(0);
   transition: 0.7s ease;
@@ -839,7 +867,7 @@ form .linkTxt {
   filter: blur(0);
   transition-delay: calc(0.1s * var(--j));
 }
-
+/* Animación del formulario de login al activarse */
 .wp-user.active .form-box.login .animation {
   transform: translateX(-120%);
   opacity: 0;
@@ -847,6 +875,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--i));
 }
 
+/* Contenedor de texto informativo */
 .wp-user .info-text {
   position: absolute;
   top: 0;
@@ -857,12 +886,14 @@ form .linkTxt {
   justify-content: center;
 }
 
+/* Estilo del texto informativo en la sección de login */
 .wp-user .info-text.login {
   right: 0;
   text-align: right;
   padding: 0 40px 60px 150px;
 }
 
+/* Estilo del título en el texto informativo */
 .wp-user .info-text h2 {
   font-size: 36px;
   color: var(--white);
@@ -870,11 +901,13 @@ form .linkTxt {
   text-transform: uppercase;
 }
 
+/* Estilo del párrafo en el texto informativo */
 .wp-user .info-text p {
   font-size: 16px;
   color: var(--white);
 }
 
+/* Animación del texto informativo en la sección de login */
 .wp-user .info-text.login .animation {
   transform: translateX(0);
   opacity: 1;
@@ -883,6 +916,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--j));
 }
 
+/* Animación del texto informativo en la sección de login al activarse */
 .wp-user.active .info-text.login .animation {
   transform: translateX(120px);
   opacity: 0;
@@ -891,6 +925,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--i));
 }
 
+/* Fondo rotado */
 .wp-user .rotate-bg {
   position: absolute;
   top: -4px;
@@ -904,20 +939,24 @@ form .linkTxt {
   transition-delay: 1.6s;
 }
 
+/* Fondo rotado al activarse */
 .wp-user.active .rotate-bg {
   transform: rotate(0) skewY(0);
   transition-delay: 0.5s;
 }
 
+/* Caja del formulario de registro */
 .wp-user .form-box.register {
   padding: 0 40px 0 60px;
   right: 0;
 }
 
+/* Activación de la caja del formulario de registro */
 .wp-user.active .form-box.register {
   pointer-events: auto;
 }
 
+/* Animación del formulario de registro */
 .wp-user .form-box.register .animation {
   transform: translateX(120%);
   opacity: 0;
@@ -926,6 +965,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--j));
 }
 
+/* Animación del formulario de registro al activarse */
 .wp-user.active .form-box.register .animation {
   transform: translateX(0);
   opacity: 1;
@@ -933,6 +973,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var (--i));
 }
 
+/* Estilo del texto informativo en la sección de registro */
 .wp-user .info-text.register {
   left: 0;
   text-align: left;
@@ -940,10 +981,12 @@ form .linkTxt {
   pointer-events: none;
 }
 
+/* Activación del texto informativo en la sección de registro */
 .wp-user.active .info-text.register {
   pointer-events: auto;
 }
 
+/* Animación del texto informativo en la sección de registro */
 .wp-user .info-text.register .animation {
   transform: translateX(-120%);
   opacity: 0;
@@ -952,6 +995,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--j));
 }
 
+/* Animación del texto informativo en la sección de registro al activarse */
 .wp-user.active .info-text.register .animation {
   transform: translateX(0);
   opacity: 1;
@@ -959,6 +1003,7 @@ form .linkTxt {
   transition-delay: calc(0.1s * var(--i));
 }
 
+/* Segundo fondo rotado */
 .wp-user .rotate-bg2 {
   position: absolute;
   top: 100%;
@@ -972,6 +1017,7 @@ form .linkTxt {
   transition-delay: 0.5s;
 }
 
+/* Segundo fondo rotado al activarse */
 .wp-user.active .rotate-bg2 {
   transform: rotate(-11deg) skewY(-40deg);
   transition-delay: 1.2s;

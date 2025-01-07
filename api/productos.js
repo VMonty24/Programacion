@@ -1,9 +1,11 @@
+// Función para mostrar los productos en la tabla
 function mostrarProductos(productos) {
     noneDisplay();
     document.getElementById("productosTableContainer").style.display = "block";
     const productosTable = document.getElementById("productosTable").getElementsByTagName("tbody")[0];
     productosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
 
+    // Iterar sobre cada producto y añadirlo a la tabla
     productos.forEach(producto => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
@@ -22,12 +24,14 @@ function mostrarProductos(productos) {
     });
 }
 
+// Función para obtener los productos la api
 async function getProductos() {
     const response = await fetch('?controller=api&action=getProductos');
     const productos = await response.json();
     mostrarProductos(productos);
 }
 
+// Función para eliminar un producto
 async function deleteProducto(id) {
     const confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
     if (!confirmacion) return; // Detener si el usuario cancela
@@ -35,7 +39,7 @@ async function deleteProducto(id) {
     const response = await fetch(`?controller=api&action=deleteProducto&id=${id}`);
     const data = await response.json();
 
-    console.log(data); // Agregar esta línea para ver el contenido de data
+    console.log(data); // Ver el contenido de data
 
     if (data.status === "success") {
         alert(data.message);
@@ -45,6 +49,7 @@ async function deleteProducto(id) {
     }
 }
 
+// Función para editar un producto
 async function editProducto(id) {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
@@ -53,6 +58,7 @@ async function editProducto(id) {
     const response = await fetch(`?controller=api&action=getProductoById&id=${id}`);
     const producto = await response.json();
 
+    // Rellenar el formulario con los datos del producto
     formContainer.innerHTML = `
         <label class="form-label" for="editNombre">Nombre</label>
         <input type="text" id="editNombre" class="form-input" placeholder="Nombre" value="${producto.nombre}">
@@ -67,6 +73,7 @@ async function editProducto(id) {
         <button id="submitEditarProducto" class="btn-admin">Editar Producto</button>
     `;
 
+    // Añadir evento para enviar los datos actualizados del producto
     document.getElementById("submitEditarProducto").addEventListener("click", async function() {
         const updatedProducto = {
             id: producto.id,
@@ -96,10 +103,12 @@ async function editProducto(id) {
     });
 }
 
+// Función para crear un nuevo producto
 async function createProducto() {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
 
+    // Rellenar el formulario para crear un nuevo producto
     formContainer.innerHTML = `
         <label class="form-label" for="createNombre">Nombre</label>
         <input type="text" id="createNombre" class="form-input" placeholder="Nombre">
@@ -114,6 +123,7 @@ async function createProducto() {
         <button id="submitCreateProducto" class="btn-admin">Crear Producto</button>
     `;
 
+    // Añadir evento para enviar los datos del nuevo producto
     document.getElementById("submitCreateProducto").addEventListener("click", async function() {
         const newProducto = {
             nombre: document.getElementById("createNombre").value,
@@ -142,10 +152,11 @@ async function createProducto() {
     });
 }
 
-// Event listeners
+// Event listeners para obtener y crear productos
 document.getElementById("getProductos").addEventListener("click", getProductos);
 document.getElementById("newProducto").addEventListener("click", createProducto);
 
+// Event listener para manejar las acciones de editar y eliminar en la tabla de productos
 document.querySelector('#productosTable tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete')) {
         const row = event.target.closest('tr');

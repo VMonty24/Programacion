@@ -1,3 +1,4 @@
+// Función para mostrar los pedidos en la tabla
 async function mostrarPedidos(pedidos) {
     noneDisplay();
     document.getElementById("pedidosTableContainer").style.display = "block";
@@ -25,12 +26,14 @@ async function mostrarPedidos(pedidos) {
     });
 }
 
+// Función para obtener los pedidos desde la API
 async function getPedidos(accion) {
     const response = await fetch(`?controller=api&action=getPedidos&order=${accion}`);
     const pedidos = await response.json();
     mostrarPedidos(pedidos);
 }
 
+// Función para eliminar un pedido
 async function deletePedido(id) {
     const confirmacion = confirm("¿Estás seguro de que deseas eliminar este pedido?");
     if (!confirmacion) return;
@@ -46,6 +49,7 @@ async function deletePedido(id) {
     }
 }
 
+// Función para editar un pedido
 async function editPedido(id) {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
@@ -93,6 +97,7 @@ async function editPedido(id) {
     });
 }
 
+// Función para crear un nuevo pedido
 async function createPedido() {
     noneDisplay();
     document.getElementById("formContainer").style.display = "block";
@@ -136,7 +141,7 @@ async function createPedido() {
     });
 }
 
-// Event listeners
+// Event listeners para los botones y elementos interactivos
 document.getElementById("getPedidos").addEventListener("click", getPedidos);
 document.getElementById("newPedido").addEventListener("click", createPedido);
 document.getElementById("currencySelect").addEventListener("change", getPedidos);
@@ -147,6 +152,7 @@ document.getElementById("totalDesc").addEventListener("click", () => getPedidos(
 document.getElementById("fechaAsc").addEventListener("click", () => getPedidos("fechaAsc"));
 document.getElementById("fechaDesc").addEventListener("click", () => getPedidos("fechaDesc"));
 
+// Event listener para los botones de editar y eliminar en la tabla de pedidos
 document.querySelector('#pedidosTable tbody').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete')) {
         const row = event.target.closest('tr');

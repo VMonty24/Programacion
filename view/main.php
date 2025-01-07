@@ -1,8 +1,8 @@
 <?php
+// Iniciar sesión si no está iniciada
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -14,63 +14,53 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="view/css/styles.css">
     <!--BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- TIPOGRACFIA ROBOT -->
+    <!-- TIPOGRAFÍA ROBOTO -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-   
-
-  </head>
+</head>
 <body>
 
 <!-- NAVEGADOR -->
 <nav class="navbar navbar-expand-md nav">
   <div class="container-fluid d-flex align-items-center">
+    <!-- Logo -->
+    <a class="col-1" href="?controller=producto">
+      <img src="view/images/logo_black.svg" class="logo" alt="Sushi one logo">
+    </a>
     
-    
-      
-        <!-- Logo -->
-      <a class="col-1" href="?controller=producto">
-        <img src="view/images/logo_black.svg" class="logo" alt="Sushi one logo">
-      </a>
-      
-      <!-- Menú de navegación -->
-      <ul class="navbar-nav ms-4 col-md-5 d-flex flex-row align-items-center">
-        <li class="nav-item me-4">
-          <a class="nav-link" href="?controller=producto">INICIO</a>
-        </li>
-        <li class="nav-item me-4">
-          <a class="nav-link" href="?controller=producto&action=carta">CARTA</a>
-        </li>
-        <li class="nav-item me-4">
-          <a class="nav-link" href="https://www.google.com/maps/search/SushiOne/@41.5851511,-3.3973894,6z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">LOCALES</a>
-        </li>
-      </ul>
+    <!-- Menú de navegación -->
+    <ul class="navbar-nav ms-4 col-md-5 d-flex flex-row align-items-center">
+      <li class="nav-item me-4">
+        <a class="nav-link" href="?controller=producto">INICIO</a>
+      </li>
+      <li class="nav-item me-4">
+        <a class="nav-link" href="?controller=producto&action=carta">CARTA</a>
+      </li>
+      <li class="nav-item me-4">
+        <a class="nav-link" href="https://www.google.com/maps/search/SushiOne/@41.5851511,-3.3973894,6z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D">LOCALES</a>
+      </li>
+    </ul>
 
-      <!-- Botón de pedido -->
-      <div class="col-md-2 d-flex flex-end justify-content-end align-items-center col-2">
-        <a href="?controller=producto&action=carta" class="btn-1">EMPEZAR PEDIDO</a>
-      </div>
-      
-      <!-- Iconos -->
-      <div class="col-md-4 d-flex justify-content-end align-items-center icon-nav">
-        <a class="nav-item me-4" href="?controller=producto&action=carrito">
-          <img src="view/images/iconos/icono_carrito_blanco.svg" class="icono" alt="carrito">
-        </a>
-        <a class="nav-item me-4" href="?controller=usuarios&action=userDetails">
-          <img src="view/images/iconos/icono_session_blanco.svg" class="icono" alt="user">
-        </a>
-        <a class="nav-item me-4" href="?controller=usuarios&action=logout">
-          <img src="view/images/iconos/icono_cerrar_blanco.svg" class="icono" alt="logout">
-        </a>
-      </div>
-      
+    <!-- Botón de pedido -->
+    <div class="col-md-2 d-flex flex-end justify-content-end align-items-center col-2">
+      <a href="?controller=producto&action=carta" class="btn-1">EMPEZAR PEDIDO</a>
+    </div>
+    
+    <!-- Iconos -->
+    <div class="col-md-4 d-flex justify-content-end align-items-center icon-nav">
+      <a class="nav-item me-4" href="?controller=producto&action=carrito">
+        <img src="view/images/iconos/icono_carrito_blanco.svg" class="icono" alt="carrito">
+      </a>
+      <a class="nav-item me-4" href="?controller=usuarios&action=userDetails">
+        <img src="view/images/iconos/icono_session_blanco.svg" class="icono" alt="user">
+      </a>
+      <a class="nav-item me-4" href="?controller=usuarios&action=logout">
+        <img src="view/images/iconos/icono_cerrar_blanco.svg" class="icono" alt="logout">
+      </a>
     </div>
   </div>
 </nav>
 
-
- <?php include_once $views?>
-
+<?php include_once $views ?>
 
 
 <!-- FOOTER -->
