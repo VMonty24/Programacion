@@ -1,6 +1,10 @@
 // Añadir eventos a los botones de inicio y salir
-document.getElementById("inicio").addEventListener("click", noneDisplay);
-document.getElementById("salir").addEventListener("click", exitAdmin);
+["inicio", "salir"].map(id => {
+    const button = document.getElementById(id);
+    if (button) {
+        button.addEventListener("click", id === "inicio" ? noneDisplay : exitAdmin);
+    }
+});
 
 // Función para ocultar todos los contenedores
 function noneDisplay() {

@@ -8,7 +8,8 @@ async function mostrarPedidos(pedidos) {
     const monedaSeleccionada = document.getElementById("currencySelect").value;
     const tipoCambio = await obtenerTipoCambio(monedaSeleccionada);
 
-    pedidos.forEach(pedido => {
+    // Usando map para crear las filas de la tabla
+    const filas = pedidos.map(pedido => {
         const precioConvertido = convertirPrecio(pedido.total, tipoCambio); // Convertir el precio
         const fila = document.createElement("tr");
         fila.innerHTML = `
@@ -22,9 +23,13 @@ async function mostrarPedidos(pedidos) {
                 <button class="delete btn-action" data-id="${pedido.id}">Eliminar</button>
             </td>
         `;
-        pedidosTable.appendChild(fila);
+        return fila;
     });
+
+    // Agregar las filas al cuerpo de la tabla
+    filas.forEach(fila => pedidosTable.appendChild(fila));
 }
+
 
 // Función para obtener los pedidos desde la API
 async function getPedidos(accion) {

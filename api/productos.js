@@ -5,8 +5,8 @@ function mostrarProductos(productos) {
     const productosTable = document.getElementById("productosTable").getElementsByTagName("tbody")[0];
     productosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
 
-    // Iterar sobre cada producto y añadirlo a la tabla
-    productos.forEach(producto => {
+    // Usar map para generar las filas y luego agregarlas a la tabla
+    const filas = productos.map(producto => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${producto.id}</td>
@@ -20,9 +20,13 @@ function mostrarProductos(productos) {
                 <button class="delete btn-action" data-id="${producto.id}">Eliminar</button>
             </td>
         `;
-        productosTable.appendChild(fila);
+        return fila;
     });
+
+    // Añadir las filas generadas al cuerpo de la tabla
+    filas.forEach(fila => productosTable.appendChild(fila));
 }
+
 
 // Función para obtener los productos la api
 async function getProductos() {

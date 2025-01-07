@@ -5,8 +5,8 @@ function mostrarUsuarios(usuarios) {
     const usuariosTable = document.getElementById("usuariosTable").getElementsByTagName("tbody")[0];
     usuariosTable.innerHTML = ""; // Limpiar la tabla antes de añadir los nuevos datos
 
-    // Añadir cada usuario a la tabla
-    usuarios.forEach(usuario => {
+    // Usamos map() para crear las filas de la tabla y luego añadirlas
+    const filas = usuarios.map(usuario => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${usuario.id}</td>
@@ -21,8 +21,11 @@ function mostrarUsuarios(usuarios) {
                 <button class="delete btn-action" data-id="${usuario.id}">Eliminar</button>
             </td>
         `;
-        usuariosTable.appendChild(fila);
+        return fila;
     });
+
+    // Añadir todas las filas al cuerpo de la tabla
+    filas.forEach(fila => usuariosTable.appendChild(fila));
 }
 
 // Función para obtener los usuarios desde la API
