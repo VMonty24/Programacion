@@ -12,6 +12,8 @@ $oferta = $resultados['oferta'];
   <p class="texto">HOME / CARRITO</p>
 </div>
 
+<h1 class="title_page">CARRITO</h1>
+
 <div class="cart-container">
   <?php if (!empty($carrito)): ?>
     <?php foreach ($carrito as $item): ?>
